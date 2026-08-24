@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ShoppingCart, History, FileText, Home, Users, ShieldCheck, MonitorPlay, TrendingUp } from "lucide-react"
+import { ShoppingCart, History, FileText, Home, Users, ShieldCheck, MonitorPlay, TrendingUp, Clock3 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 import { appConfig } from "@/data/config"
@@ -59,9 +59,10 @@ export default function Navbar() {
           <NavLink href="/" label="Home" scrolled={scrolled} icon={<Home className="w-4 h-4 mr-1" />} />
           <NavLink href="/history" label="Riwayat" scrolled={scrolled} icon={<History className="w-4 h-4 mr-1" />} />
           <NavLink href="/garansi" label="Garansi" scrolled={scrolled} icon={<ShieldCheck className="w-4 h-4 mr-1" />} />
-          <NavLink href="/beli-adp" label="Join Admin Panel" scrolled={scrolled} icon={<FileText className="w-4 h-4 mr-1" />} />
+          <NavLink href="/perpanjang" label="Perpanjang" scrolled={scrolled} icon={<Clock3 className="w-4 h-4 mr-1" />} />
+          {/*<NavLink href="/beli-adp" label="Join Admin Panel" scrolled={scrolled} icon={<FileText className="w-4 h-4 mr-1" />} />*/}
           <NavLink href="/affiliate" label="Menjadi Affiliate" scrolled={scrolled} icon={<TrendingUp className="w-4 h-4 mr-1" />} />
-          <NavLink href={appConfig.whatsappGroupLink} label="Tutorial" scrolled={scrolled} icon={<MonitorPlay className="w-4 h-4 mr-1" />} external />
+          <NavLink href={appConfig.LinkTutorial} label="Tutorial" scrolled={scrolled} icon={<MonitorPlay className="w-4 h-4 mr-1" />} external />
         </div>
 
         <button
@@ -143,6 +144,12 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             icon={<ShieldCheck className="w-4 h-4 mr-2" />}
           />
+          <MobileNavLink
+            href="/perpanjang"
+            label="Perpanjang"
+            onClick={() => setIsOpen(false)}
+            icon={<Clock3 className="w-4 h-4 mr-2" />}
+          />
           {/*<MobileNavLink
             href="/beli-adp"
             label="Join Admin Panel"
@@ -156,7 +163,7 @@ export default function Navbar() {
             icon={<TrendingUp className="w-4 h-4 mr-2" />}
           />
           <MobileNavLink
-            href={appConfig.whatsappGroupLink}
+            href={appConfig.LinkTutorial}
             label="Tutorial"
             onClick={() => setIsOpen(false)}
             icon={<Users className="w-4 h-4 mr-2" />}
