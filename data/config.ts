@@ -35,7 +35,9 @@ export const pterodactylConfig = {
 }
 
 export const appConfig = {
-  whatsappGroupLink: "https://youtu.be/OYuigq0zpjc?si=E-EB-eq-e2dNNEcM", // link tutorial YouTube
+  whatsappGroupLink: "https://whatsapp.com/channel/0029VbBHzkt1t90Z4H55f638",
+  LinkTutorial: "https://youtu.be/OYuigq0zpjc?si=E-EB-eq-e2dNNEcM", // link tutorial YouTube
+  LinkWebsite: "https://www.tokopanel.store",
   nameHost: "TokoPanel", // nama host 
   fee: 0.03, // 2%
   garansi: {
@@ -59,7 +61,7 @@ export const appConfig = {
   telegram: {
     botToken: "8877809073:AAEwdj729MJYpFyDxNGuMx-K15jAMBaUhhI",
     ownerId: "7015524549",
-    channelId: "@testimonimts4you",
+    channelId: "@TokoPanel_Testimonitrx",
   },
   mongodb: {
     uri: process.env.MONGODB_URL, // url mongo mu
