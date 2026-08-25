@@ -16,13 +16,13 @@ export function InfoSection() {
     {
       icon: <CalendarClock className="w-10 h-10 text-red-500" />,
       title: "MASA AKTIF PANEL",
-      description: "Masa aktif panel hanya 1 bulan, dengan garansi aktif full 30 hari (5× replace).",
+      description: "Kamu bisa menentukan masa aktif panel (15 hari, 30 hari, 45 hari), dengan garansi aktif full sesuai hari yang di pesan (5× replace).",
       delay: 0.4,
     },
     {
       icon: <Cpu className="w-10 h-10 text-red-500" />,
       title: "SPESIFIKASI SERVER PRIVATE",
-      description: "Server kami menggunakan VPS (RAM 32GB/16 CORE • NVMe 200GB) dan VPS kami legal di Indonesia.",
+      description: "Server kami menggunakan VPS INTEL XEON V4 (RAM 64GB/16 CORE • NVMe 200GB) dan VPS kami legal di Indonesia.",
       delay: 0.4,
     },
     {
@@ -40,7 +40,7 @@ export function InfoSection() {
     {
       icon: <CreditCard className="w-10 h-10 text-red-500" />,
       title: "PEMBAYARAN MUDAH",
-      description: "Proses pembayaran yang mudah dan cepat dengan metode pembayaran QRIS all payment.",
+      description: "Proses pembayaran yang sangat mudah dan aman dengan metode pembayaran QRIS all payment.",
       delay: 0.6,
     },
   ]
