@@ -74,7 +74,7 @@ dbName: "Congor",
     instagram: "https://www.instagram.com/ig_mtsstore",
     channelWaDMP: "https://whatsapp.com/channel/0029VaFHccBBFLgPXz1d6o45",
     channelWa: "https://whatsapp.com/channel/0029VbBHzkt1t90Z4H55f638", // link ch wa
-    channelTele: "https://t.me/testimonimts4you", // link ch tele
+    channelTele: "https://t.me/TokoPanel_Testimonitrx", // link ch tele
     link: "https://lynk.id/scriptnya/page/script-bot-free",
   }
 }
