@@ -11,7 +11,7 @@ import { checkUserExists } from "@/app/actions/check-user-exists"
 import { plans } from "@/data/plans"
 import { appConfig } from "@/data/config"
 import { formatRupiah, formatHitung } from "@/lib/utils"
-import { Check, Info, User, Mail, Package, Loader2, Settings, MessageSquare, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, Bot, Globe, Headset } from "lucide-react"
+import { Check, Info, User, Mail, Package, Loader2, Settings, MessageSquare, ClipboardList, Clock, MemoryStick, HardDrive, Cpu, Bot, Globe, Headset } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { ConfirmationDialog } from "./confirmation-dialog"
 import { StatusModal } from "./status-modal"
@@ -329,7 +329,7 @@ export default function PanelForm() {
                 type="button"
                 className="w-full h-11 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 hover:border-sky-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
-                <RotateCcwClock className="w-4 h-4 text-sky-400" />
+                <ClipboardList className="w-4 h-4 text-sky-400" />
                 SEMUA RIWAYAT TRANSAKSI
               </Button>
             </a>
