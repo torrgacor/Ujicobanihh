@@ -9,7 +9,7 @@ export const pterodactylConfig = {
   // Private Server Configuration
   private: {
     domain: "https://serverpanel01.tokopanel.store",
-    apiKey: process.env.PANEL_APIKEY_PRIVATE,
+    apiKey: process.env.PANEL_APIKEY_PUBLIC,
     nests: "5", 
     eggs: [  
       { id: 15, nama: "Node.js", harga: 0, catatan: "untuk menjalankan Bot WhatsApp dan Telegram  Node.js" },
@@ -21,10 +21,11 @@ export const pterodactylConfig = {
   // Public Server Configuration
   public: {
     domain: "https://tokopanel151-private26.panelshop.biz.id",
-    apiKey: process.env.PANEL_APIKEY_PUBLIC,
+    apiKey: process.env.PANEL_APIKEY_PRIVATE,
     nests: "5", 
-    eggs: [  // Changed from 'egg' to 'eggs' (array)
-      { id: 17, nama: "Node.js", harga: 0, catatan: "untuk menjalankan Program Website dan Aplikasi Node.js" }
+    eggs: [  
+      { id: 15, nama: "Node.js", harga: 0, catatan: "untuk menjalankan Bot WhatsApp dan Telegram  Node.js" },
+      { id: 16, nama: "Python", harga: 3000, catatan: "untuk menjalankan Bot Discord dan Telegram Python" }
     ],
     defaultEggId: 15, // ID egg default
     location: "1",
