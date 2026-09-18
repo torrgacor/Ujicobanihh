@@ -11,7 +11,7 @@ import { checkUserExists } from "@/app/actions/check-user-exists"
 import { plans } from "@/data/plans"
 import { appConfig } from "@/data/config"
 import { formatRupiah, formatHitung } from "@/lib/utils"
-import { Check, Info, User, Mail, Package, Loader2, Settings, Rocket, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, LockKeyhole, Globe, Headset } from "lucide-react"
+import { Check, Info, User, Mail, Package, Loader2, Settings, Rocket, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, Lock, Globe, Headset } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { ConfirmationDialog } from "./confirmation-dialog"
 import { StatusModal } from "./status-modal"
@@ -396,78 +396,21 @@ export default function PanelForm() {
               <Package className="w-4 h-4 text-red-500" />
               Pilih Paket
             </Label>
-            
-<div className="flex items-center gap-2">
-  <button
-    type="button"
-    aria-pressed={serverType === "public"}
-    onClick={() => {
-      const next = "public";
-      setServerType(next);
-
-      if (
-        plans.find(
-          (p) =>
-            p.type === next &&
-            p.access === accessType &&
-            p.id === selectedPlan
-        )
-      ) {
-        setSelectedPlan("");
-      }
-    }}
-    className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
-      serverType === "public"
-        ? "bg-red-600 text-white"
-        : "bg-dark-500 text-gray-300"
-    }`}
-  >
-    <span className="inline-flex items-center gap-1.5">
-      <Globe
-        className="w-4 h-4"
-        strokeWidth={2}
-      />
-      <span>Public Node</span>
-    </span>
-  </button>
-  
-  <button
-    type="button"
-    aria-pressed={serverType === "private"}
-    onClick={() => {
-      const next = "private";
-      setServerType(next);
-      setAccessType("regular");
-
-      if (
-        plans.find(
-          (p) =>
-            p.type === next &&
-            p.access === "regular" &&
-            p.id === selectedPlan
-        )
-      ) {
-        setSelectedPlan("");
-      }
-    }}
-    className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
-      serverType === "private"
-        ? "bg-red-600 text-white"
-        : "bg-dark-500 text-gray-300"
-    }`}
-  >
-    <span className="inline-flex items-center gap-1.5">
-      <LockKeyhole
-        className="w-4 h-4"
-        strokeWidth={2}
-      />
-      <span>Private Node</span>
-    </span>
-  </button>
-</div>
-
-
-{/**            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
+            <button
+                type="button"
+                aria-pressed={serverType === "public"}
+                onClick={() => {
+                  const next = "public"
+                  setServerType(next)
+                  if (!plans.find((p) => p.type === next && p.access === accessType && p.id === selectedPlan)) setSelectedPlan("")
+                }}
+                className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
+                  serverType === "public" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
+                }`}
+              >
+                Public Node
+              </button>
               <button
                 type="button"
                 aria-pressed={serverType === "private"}
@@ -483,21 +426,7 @@ export default function PanelForm() {
               >
                 Private Node
               </button>
-              <button
-                type="button"
-                aria-pressed={serverType === "public"}
-                onClick={() => {
-                  const next = "public"
-                  setServerType(next)
-                  if (!plans.find((p) => p.type === next && p.access === accessType && p.id === selectedPlan)) setSelectedPlan("")
-                }}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                  serverType === "public" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
-                }`}
-              >
-                Public Node
-              </button>
-            </div>**/}
+            </div>
           </div>
           <p className="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
             <span className="font-medium text-white inline-flex items-center gap-1">
@@ -507,7 +436,7 @@ export default function PanelForm() {
           </p>
           <p className="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
             <span className="font-medium text-white inline-flex items-center gap-1">
-              <LockKeyhole className="w-4 h-4 text-white-500" /> Private Node
+              <Lock className="w-4 h-4 text-white-500" /> Private Node
             </span> 
             (Pengguna Lebih Sedikit, Performa Jadi Lebih Cepat)
           </p>
