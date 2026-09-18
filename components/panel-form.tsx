@@ -11,7 +11,7 @@ import { checkUserExists } from "@/app/actions/check-user-exists"
 import { plans } from "@/data/plans"
 import { appConfig } from "@/data/config"
 import { formatRupiah, formatHitung } from "@/lib/utils"
-import { Check, Info, User, Mail, Package, Loader2, Settings, Star, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, Lock, Globe, Headset } from "lucide-react"
+import { Check, Info, User, Mail, Package, Loader2, Settings, Crown, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, Lock, Globe, Headset } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { ConfirmationDialog } from "./confirmation-dialog"
 import { StatusModal } from "./status-modal"
@@ -315,7 +315,7 @@ export default function PanelForm() {
                 type="button"
                 className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
-                <Star className="w-4 h-4 text-white-400" />
+                <Crown className="w-4 h-4 text-white-400" />
                 INFORMASI SERVER PANEL
               </Button>
             </a>
