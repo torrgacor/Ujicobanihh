@@ -313,7 +313,7 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-red-500/30 hover:border-red-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
                 <Rocket className="w-4 h-4 text-white-400" />
                 INFORMASI SERVER PANEL
@@ -327,7 +327,7 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-red-500/30 hover:border-red-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
                 <ClipboardList className="w-4 h-4 text-white-400" />
                 SEMUA RIWAYAT TRANSAKSI
@@ -341,7 +341,7 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-red-500/30 hover:border-red-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
                 <Headset className="w-4 h-4 text-white-400" />
                 CUSTOMER SERVICE
@@ -396,7 +396,7 @@ export default function PanelForm() {
               <Package className="w-4 h-4 text-red-500" />
               Pilih Paket
             </Label>
-            <div className="flex items-center gap-2">
+            {/**<div className="flex items-center gap-2">
             <button
                 type="button"
                 aria-pressed={serverType === "public"}
@@ -426,7 +426,76 @@ export default function PanelForm() {
               >
                 Private Node
               </button>
-            </div>
+            </div>**/}
+            
+            <div className="flex items-center gap-2">
+  <button
+    type="button"
+    aria-pressed={serverType === "public"}
+    onClick={() => {
+      const next = "public";
+      setServerType(next);
+
+      if (
+        plans.find(
+          (p) =>
+            p.type === next &&
+            p.access === accessType &&
+            p.id === selectedPlan
+        )
+      ) {
+        setSelectedPlan("");
+      }
+    }}
+    className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
+      serverType === "public"
+        ? "bg-red-600 text-white"
+        : "bg-dark-500 text-gray-300"
+    }`}
+  >
+    <span className="inline-flex items-center gap-1.5">
+      <Globe
+        className="w-4 h-4"
+        strokeWidth={2}
+      />
+      <span>Public Node</span>
+    </span>
+  </button>
+  
+  <button
+    type="button"
+    aria-pressed={serverType === "private"}
+    onClick={() => {
+      const next = "private";
+      setServerType(next);
+      setAccessType("regular");
+
+      if (
+        plans.find(
+          (p) =>
+            p.type === next &&
+            p.access === "regular" &&
+            p.id === selectedPlan
+        )
+      ) {
+        setSelectedPlan("");
+      }
+    }}
+    className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
+      serverType === "private"
+        ? "bg-red-600 text-white"
+        : "bg-dark-500 text-gray-300"
+    }`}
+  >
+    <span className="inline-flex items-center gap-1.5">
+      <Lock
+        className="w-4 h-4"
+        strokeWidth={2}
+      />
+      <span>Private Node</span>
+    </span>
+  </button>
+</div>
           </div>
           <p className="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
             <span className="font-medium text-white inline-flex items-center gap-1">
@@ -563,7 +632,7 @@ export default function PanelForm() {
                           <span>{plan.name}</span>
                           <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                             plan.type === "private" ? "bg-red-600 text-white" : "bg-red-600 text-white"
-                          }`}>{plan.type === "private" ? "PANEL BOT" : "PANEL WEB"}</span>
+                          }`}>{plan.type === "private" ? "PRIVATE" : "PUBLIC"}</span>
                         </h3>
                       </div>
                       <div className="text-red-400 font-bold mb-2">{formatRupiah(plan.price)}</div>
