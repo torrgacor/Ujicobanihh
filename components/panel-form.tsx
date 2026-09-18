@@ -295,7 +295,7 @@ export default function PanelForm() {
           Bingung cari tempat toko panel yang legal, aman dan murah dimana?
         </p>
         <p className="mt-2 text-sm text-gray-400">
-          Yuk beli panel di sini, Panel sudah terjamin legalnya dan harganya pas di kantong kamu.
+          Yuk beli panel di sini, Panel sudah terjamin legalitas nya dan harga yang pas di kantong kamu.
         </p>
         <p className="mt-1 text-xs text-gray-500">
           Silakan isi data di bawah dan pilih paket yang sesuai untuk mendapatkan server panel terbaik kamu.
