@@ -313,9 +313,9 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:border-emerald-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
-                <Rocket className="w-4 h-4 text-white-400" />
+                <Rocket className="w-4 h-4 text-emerald-400" />
                 INFORMASI SERVER PANEL
               </Button>
             </a>
@@ -327,9 +327,9 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 hover:border-sky-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
-                <RotateCcwClock className="w-4 h-4 text-white-400" />
+                <RotateCcwClock className="w-4 h-4 text-sky-400" />
                 SEMUA RIWAYAT TRANSAKSI
               </Button>
             </a>
@@ -341,9 +341,9 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 hover:border-sky-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
-                <Headset className="w-4 h-4 text-white-400" />
+                <Headset className="w-4 h-4 text-sky-400" />
                 CUSTOMER SERVICE
               </Button>
             </a>
