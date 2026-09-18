@@ -20,8 +20,8 @@ export const pterodactylConfig = {
   },
   // Public Server Configuration
   public: {
-    domain: "https://serverpanel01.tokopanel.store",
-    apiKey: process.env.PANEL_APIKEY_PRIVATE,
+    domain: "https://tokopanel151-private26.panelshop.biz.id",
+    apiKey: process.env.PANEL_APIKEY_PUBLIC,
     nests: "5", 
     eggs: [  // Changed from 'egg' to 'eggs' (array)
       { id: 17, nama: "Node.js", harga: 0, catatan: "untuk menjalankan Program Website dan Aplikasi Node.js" }
