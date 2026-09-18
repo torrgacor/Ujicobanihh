@@ -11,7 +11,7 @@ import { checkUserExists } from "@/app/actions/check-user-exists"
 import { plans } from "@/data/plans"
 import { appConfig } from "@/data/config"
 import { formatRupiah, formatHitung } from "@/lib/utils"
-import { Check, Info, User, Mail, Package, Loader2, Settings, Crown, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, Lock, Globe, Headset } from "lucide-react"
+import { Check, Info, User, Mail, Package, Loader2, Settings, MessageSquare, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, Bot, Globe, Headset } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { ConfirmationDialog } from "./confirmation-dialog"
 import { StatusModal } from "./status-modal"
@@ -313,9 +313,9 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:border-emerald-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
-                <Crown className="w-4 h-4 text-white-400" />
+                <MessageSquare className="w-4 h-4 text-emerald-400" />
                 INFORMASI SERVER PANEL
               </Button>
             </a>
@@ -327,9 +327,9 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 hover:border-sky-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
-                <RotateCcwClock className="w-4 h-4 text-white-400" />
+                <RotateCcwClock className="w-4 h-4 text-sky-400" />
                 SEMUA RIWAYAT TRANSAKSI
               </Button>
             </a>
@@ -341,9 +341,9 @@ export default function PanelForm() {
             >
               <Button
                 type="button"
-                className="w-full h-11 bg-red-500/10 hover:bg-red-500/20 text-white-400 border border-white-500/30 hover:border-white-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+                className="w-full h-11 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 hover:border-sky-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
               >
-                <Headset className="w-4 h-4 text-white-400" />
+                <Headset className="w-4 h-4 text-sky-400" />
                 CUSTOMER SERVICE
               </Button>
             </a>
@@ -397,20 +397,6 @@ export default function PanelForm() {
               Pilih Paket
             </Label>
             <div className="flex items-center gap-2">
-            <button
-                type="button"
-                aria-pressed={serverType === "public"}
-                onClick={() => {
-                  const next = "public"
-                  setServerType(next)
-                  if (!plans.find((p) => p.type === next && p.access === accessType && p.id === selectedPlan)) setSelectedPlan("")
-                }}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                  serverType === "public" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
-                }`}
-              >
-                Public Node
-              </button>
               <button
                 type="button"
                 aria-pressed={serverType === "private"}
@@ -424,21 +410,35 @@ export default function PanelForm() {
                   serverType === "private" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
                 }`}
               >
-                Private Node
+                PANEL BOT
+              </button>
+              <button
+                type="button"
+                aria-pressed={serverType === "public"}
+                onClick={() => {
+                  const next = "public"
+                  setServerType(next)
+                  if (!plans.find((p) => p.type === next && p.access === accessType && p.id === selectedPlan)) setSelectedPlan("")
+                }}
+                className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
+                  serverType === "public" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
+                }`}
+              >
+                PANEL WEB
               </button>
             </div>
           </div>
           <p className="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
             <span className="font-medium text-white inline-flex items-center gap-1">
-              <Globe className="w-4 h-4 text-white-500" /> Public Node
+              <Bot className="w-4 h-4 text-white-500" /> PANEL BOT
             </span> 
-            (Pengguna Lebih Banyak, Performa Menyesuaikan)
+            (Untuk Menjalankan Bot WhatsApp/Telegram/Discord)
           </p>
           <p className="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
             <span className="font-medium text-white inline-flex items-center gap-1">
-              <Lock className="w-4 h-4 text-white-500" /> Private Node
+              <Globe className="w-4 h-4 text-white-500" /> PANEL WEB
             </span> 
-            (Pengguna Lebih Sedikit, Performa Jadi Lebih Cepat)
+            (Untuk Menjalankan Tester Progres Aplikasi Website)
           </p>
           
           {/*{serverType === "public" && (
