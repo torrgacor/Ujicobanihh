@@ -11,7 +11,7 @@ import { checkUserExists } from "@/app/actions/check-user-exists"
 import { plans } from "@/data/plans"
 import { appConfig } from "@/data/config"
 import { formatRupiah, formatHitung } from "@/lib/utils"
-import { Check, Info, User, Mail, Package, Loader2, Settings, Rocket, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, Lock, Globe, Headset } from "lucide-react"
+import { Check, Info, User, Mail, Package, Loader2, Settings, Rocket, RotateCcwClock, Clock, MemoryStick, HardDrive, Cpu, Bot, Globe, Headset } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { ConfirmationDialog } from "./confirmation-dialog"
 import { StatusModal } from "./status-modal"
@@ -397,20 +397,6 @@ export default function PanelForm() {
               Pilih Paket
             </Label>
             <div className="flex items-center gap-2">
-            <button
-                type="button"
-                aria-pressed={serverType === "public"}
-                onClick={() => {
-                  const next = "public"
-                  setServerType(next)
-                  if (!plans.find((p) => p.type === next && p.access === accessType && p.id === selectedPlan)) setSelectedPlan("")
-                }}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                  serverType === "public" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
-                }`}
-              >
-                Public Node
-              </button>
               <button
                 type="button"
                 aria-pressed={serverType === "private"}
@@ -424,21 +410,35 @@ export default function PanelForm() {
                   serverType === "private" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
                 }`}
               >
-                Private Node
+                PANEL BOT
+              </button>
+              <button
+                type="button"
+                aria-pressed={serverType === "public"}
+                onClick={() => {
+                  const next = "public"
+                  setServerType(next)
+                  if (!plans.find((p) => p.type === next && p.access === accessType && p.id === selectedPlan)) setSelectedPlan("")
+                }}
+                className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
+                  serverType === "public" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
+                }`}
+              >
+                PANEL WEB
               </button>
             </div>
           </div>
           <p className="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
             <span className="font-medium text-white inline-flex items-center gap-1">
-              <Globe className="w-4 h-4 text-white-500" /> Public Node
+              <Bot className="w-4 h-4 text-white-500" /> PANEL BOT
             </span> 
-            (Pengguna Lebih Banyak, Performa Menyesuaikan)
+            (Untuk Menjalankan Bot WhatsApp/Telegram/Discord)
           </p>
           <p className="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
             <span className="font-medium text-white inline-flex items-center gap-1">
-              <Lock className="w-4 h-4 text-white-500" /> Private Node
+              <Globe className="w-4 h-4 text-white-500" /> PANEL WEB
             </span> 
-            (Pengguna Lebih Sedikit, Performa Jadi Lebih Cepat)
+            (Untuk Menjalankan Tester Progres Aplikasi Website)
           </p>
           
           {/*{serverType === "public" && (
