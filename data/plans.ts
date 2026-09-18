@@ -1,5 +1,5 @@
 export type PlanAccess = "regular" | "admin"
-
+ 
 export interface Plan {
   id: string
   type: "private" | "public"
