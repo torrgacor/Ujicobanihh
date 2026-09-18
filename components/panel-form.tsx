@@ -11,7 +11,7 @@ import { checkUserExists } from "@/app/actions/check-user-exists"
 import { plans } from "@/data/plans"
 import { appConfig } from "@/data/config"
 import { formatRupiah, formatHitung } from "@/lib/utils"
-import { Check, Info, User, Mail, Package, Loader2, Settings, MessageSquare, Send, Clock, MemoryStick, HardDrive, Cpu, Bot, Globe } from "lucide-react"
+import { Check, Info, User, Mail, Package, Loader2, Settings, MessageSquare, Send, Clock, MemoryStick, HardDrive, Cpu, Bot, Globe, Headset } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { ConfirmationDialog } from "./confirmation-dialog"
 import { StatusModal } from "./status-modal"
@@ -292,10 +292,10 @@ export default function PanelForm() {
       <div className="rounded-3xl border border-dark-300 bg-dark-500 p-5 mb-6">
         <h1 className="text-1xl font-semibold text-white">Selamat Datang</h1>
         <p className="mt-2 text-sm text-gray-400">
-          Bingung cari tempat beli panel yang murah dan aman dimana?
+          Bingung cari tempat toko panel yang legal, aman dan murah dimana?
         </p>
         <p className="mt-2 text-sm text-gray-400">
-          Yuk beli panel di sini, Panel sudah terjamin keamanannya dan harganya pas di kantong kamu.
+          Yuk beli panel di sini, Panel sudah terjamin legalnya dan harganya pas di kantong kamu.
         </p>
         <p className="mt-1 text-xs text-gray-500">
           Silakan isi data di bawah dan pilih paket yang sesuai untuk mendapatkan server panel terbaik kamu.
@@ -331,6 +331,20 @@ export default function PanelForm() {
               >
                 <Send className="w-4 h-4 text-sky-400" />
                 SEMUA RIWAYAT TRANSAKSI
+              </Button>
+            </a>
+            <a 
+              href={appConfig.socialMedia.adminNumber}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-full"
+            >
+              <Button
+                type="button"
+                className="w-full h-11 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 hover:border-sky-500/50 font-medium flex items-center justify-center gap-2 rounded-lg transition-all duration-200"
+              >
+                <Headset className="w-4 h-4 text-sky-400" />
+                CUSTOMER SERVICE
               </Button>
             </a>
           </div>
