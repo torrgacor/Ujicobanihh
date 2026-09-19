@@ -28,7 +28,7 @@ export default function Home() {
           </div>
         </section>
 
-        <KomponenStatistik />
+        {/**<KomponenStatistik />**/}
         <FaqSection />
         <InfoSection />
         <StatsSection />
