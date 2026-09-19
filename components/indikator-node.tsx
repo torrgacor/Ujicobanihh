@@ -81,8 +81,8 @@ export default function KomponenStatistik() {
               className="h-full bg-gradient-to-r from-red-800 to-red-400 rounded-full transition-all duration-1000 ease-out"
             ></div>
           </div>
-        </div>**/}
-      </div>
+        </div>
+      </div>**/}
 
       <div className="grid grid-cols-3 gap-4">
         <div className="flex flex-col items-center justify-center p-5 bg-[#0a0a0a] rounded-xl border border-zinc-800/60">
