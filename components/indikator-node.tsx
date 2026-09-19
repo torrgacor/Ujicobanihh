@@ -56,7 +56,7 @@ export default function KomponenStatistik() {
         </div>
       </div>
 
-      <div className="space-y-6 mb-8">
+      {/**<div className="space-y-6 mb-8">
         <div>
           <div className="flex justify-between items-end mb-2">
             <span className="text-xs font-bold text-zinc-500 tracking-widest">RAM MEMORY</span>
@@ -81,7 +81,7 @@ export default function KomponenStatistik() {
               className="h-full bg-gradient-to-r from-red-800 to-red-400 rounded-full transition-all duration-1000 ease-out"
             ></div>
           </div>
-        </div>
+        </div>**/}
       </div>
 
       <div className="grid grid-cols-3 gap-4">
