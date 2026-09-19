@@ -103,6 +103,7 @@ export default function KomponenStatistik() {
           <span className="text-sm font-bold text-white">16 CORE</span>
         </div>
       </div>
+      </div>
       
       <div className="flex items-center gap-4">
           <div className="p-3 bg-[#1a0505] rounded-xl border border-red-900/50">
