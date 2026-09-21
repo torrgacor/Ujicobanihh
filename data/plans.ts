@@ -189,7 +189,7 @@ export const plans: Plan[] = [
   
     // PAKET PANEL BOT PRIVATE
     {
-    id: "bot5gb",
+    id: "bot5gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 5GB",
@@ -202,7 +202,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot6gb",
+    id: "bot6gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 6GB",
@@ -215,7 +215,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot7gb",
+    id: "bot7gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 7GB",
@@ -228,7 +228,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot8gb",
+    id: "bot8gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 8GB",
@@ -241,7 +241,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot9gb",
+    id: "bot9gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 9GB",
@@ -254,7 +254,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot10gb",
+    id: "bot10gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 10GB",
@@ -267,7 +267,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot11gb",
+    id: "bot11gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 11GB",
@@ -280,7 +280,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot12gb",
+    id: "bot12gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 12GB",
@@ -293,7 +293,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot13gb",
+    id: "bot13gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 13GB",
@@ -306,7 +306,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot14gb",
+    id: "bot14gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 14GB",
@@ -319,7 +319,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "bot15gb",
+    id: "bot15gb-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT 15GB",
@@ -332,7 +332,7 @@ export const plans: Plan[] = [
     features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
-    id: "botunlimited",
+    id: "botunlimited-private",
     type: "private",
     access: "regular",
     name: "PANEL BOT UNLIMITED",
