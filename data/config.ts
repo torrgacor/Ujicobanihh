@@ -8,8 +8,8 @@ export interface EggConfig {
 export const pterodactylConfig = { 
   // Private Server Configuration
   private: {
-    domain: "https://serverpanel01.tokopanel.store",
-    apiKey: process.env.PANEL_APIKEY_PUBLIC,
+    domain: "https://serverpanelprivate.tokopanel.store",
+    apiKey: process.env.PANEL_APIKEY_PRIVATE,
     nests: "5", 
     eggs: [  
       { id: 15, nama: "Node.js", harga: 0, catatan: "untuk menjalankan Bot WhatsApp dan Telegram  Node.js" },
@@ -20,7 +20,7 @@ export const pterodactylConfig = {
   },
   // Public Server Configuration
   public: {
-    domain: "https://tokopanel151-private26.panelshop.biz.id",
+    domain: "https://serverpanelprivate.tokopanel.store",
     apiKey: process.env.PANEL_APIKEY_PRIVATE,
     nests: "5", 
     eggs: [  
