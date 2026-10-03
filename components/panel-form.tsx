@@ -396,40 +396,9 @@ export default function PanelForm() {
               <Package className="w-4 h-4 text-red-500" />
               Pilih Paket
             </Label>
-            {/**<div className="flex items-center gap-2">
-            <button
-                type="button"
-                aria-pressed={serverType === "public"}
-                onClick={() => {
-                  const next = "public"
-                  setServerType(next)
-                  if (!plans.find((p) => p.type === next && p.access === accessType && p.id === selectedPlan)) setSelectedPlan("")
-                }}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                  serverType === "public" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
-                }`}
-              >
-                Public Node
-              </button>
-              <button
-                type="button"
-                aria-pressed={serverType === "private"}
-                onClick={() => {
-                  const next = "private"
-                  setServerType(next)
-                  setAccessType("regular")
-                  if (!plans.find((p) => p.type === next && p.access === "regular" && p.id === selectedPlan)) setSelectedPlan("")
-                }}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                  serverType === "private" ? "bg-red-600 text-white" : "bg-dark-500 text-gray-300"
-                }`}
-              >
-                Private Node
-              </button>
-            </div>**/}
             
             <div className="flex items-center gap-2">
-  <button
+              {/*<button
     type="button"
     aria-pressed={serverType === "public"}
     onClick={() => {
@@ -460,7 +429,7 @@ export default function PanelForm() {
       />
       <span>Public Node</span>
     </span>
-  </button>
+  </button>*/}
   
   <button
     type="button"
