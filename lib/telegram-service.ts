@@ -8,20 +8,7 @@ export async function sendTelegramNotification(
   price: number,
   planName: string,
   email: string,
-  quantity: number = 1,
-  details?: {
-    serverType?: "public" | "private"
-    selectedEggId?: number | null
-    memory?: number
-    cpu?: number
-    basePrice?: number
-    discountAmount?: number
-    fee?: number
-    durationDays?: number
-    username?: string
-    total?: number
-    completedAt?: string
-  }
+  quantity: number = 1
 ) {
   try {
     if (!appConfig?.telegram?.botToken || !appConfig?.telegram?.ownerId) {
@@ -30,56 +17,14 @@ export async function sendTelegramNotification(
     }
 
     const totalServerText = quantity > 1 ? ` (${quantity} Server)` : ""
-    const transactionDetails = details || {}
-    const config = transactionDetails.serverType
-      ? pterodactylConfig[transactionDetails.serverType]
-      : undefined
-    const egg = config?.eggs?.find(
-      (item) => item.id === transactionDetails.selectedEggId
-    )
-
-    const basePrice = transactionDetails.basePrice ?? price
-    const discountAmount = transactionDetails.discountAmount ?? 0
-    const fee = transactionDetails.fee ?? 0
-    const total = transactionDetails.total ?? price
-    const durationDays = transactionDetails.durationDays ?? 30
-    const ram =
-      transactionDetails.memory !== undefined
-        ? `${formatHitung(transactionDetails.memory)} MB`
-        : "Tidak tersedia"
-    const cpu =
-      transactionDetails.cpu !== undefined
-        ? `${formatHitung(transactionDetails.cpu)}%`
-        : "Tidak tersedia"
-    const serverType = transactionDetails.serverType
-      ? transactionDetails.serverType.toUpperCase()
-      : "Tidak tersedia"
-    const eggName =
-      egg?.nama ||
-      (transactionDetails.selectedEggId
-        ? `ID ${transactionDetails.selectedEggId}`
-        : "Node.js")
-
     const message =
-      `*NEW PANEL CREATED*\n\n` +
-      `*User ID:* \`${escapeMarkdown(String(userId))}\`\n` +
-      `*Transaction ID:* \`${escapeMarkdown(transactionId)}\`\n` +
-      `*Invoice Date:* ${escapeMarkdown(formatDate(invoiceDate))}\n` +
-      `*Username:* ${escapeMarkdown(transactionDetails.username || "Tidak tersedia")}\n` +
-      `*Email:* ${escapeMarkdown(email)}\n` +
-      `*Plan:* ${escapeMarkdown(planName)}${escapeMarkdown(totalServerText)}\n` +
-      `*Server Type:* ${escapeMarkdown(serverType)}\n` +
-      `*Spesifikasi:* ${escapeMarkdown(`${ram} / ${cpu}`)}\n` +
-      `*Type Egg:* ${escapeMarkdown(eggName)}\n` +
-      `*Jumlah Produk:* ${escapeMarkdown(`${quantity} Panel`)}\n` +
-      `*Masa Aktif:* ${escapeMarkdown(`${durationDays} Hari`)}\n` +
-      `\n*RINCIAN PEMBAYARAN*\n` +
-      `*Harga Produk:* ${escapeMarkdown(formatRupiah(basePrice / Math.max(quantity, 1)))}\n` +
-      `*Biaya Tambahan Egg:* ${escapeMarkdown(formatRupiah((egg?.harga || 0) * quantity))}\n` +
-      `*Harga Produk (${quantity}x):* ${escapeMarkdown(formatRupiah(basePrice))}\n` +
-      `*Voucher Diskon:* -${escapeMarkdown(formatRupiah(discountAmount))}\n` +
-      `*Biaya Admin:* ${escapeMarkdown(formatRupiah(fee))}\n` +
-      `*TOTAL BIAYA:* ${escapeMarkdown(formatRupiah(total))}`
+  `*NEW PANEL CREATED*\n\n` +
+  `*User ID:* \`${escapeMarkdown(String(userId))}\`\n` +
+  `*Transaction ID:* \`${escapeMarkdown(transactionId)}\`\n` +
+  `*Invoice Date:* ${escapeMarkdown(formatDate(invoiceDate))}\n` +
+  `*Price:* ${escapeMarkdown(formatRupiah(price))}\n` +
+  `*Plan:* ${escapeMarkdown(planName)}${escapeMarkdown(totalServerText)}\n` +
+  `*Email:* ${escapeMarkdown(email)}`
 
     const response = await fetch(
       `https://api.telegram.org/bot${appConfig.telegram.botToken}/sendMessage`,
