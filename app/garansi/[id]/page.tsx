@@ -244,15 +244,31 @@ export default function GaransiDetailPage() {
           <div className="text-sm text-gray-300 space-y-2">
             <p><strong>Type:</strong> {transaction.serverType === "private" ? "Private Panel" : "Public Panel"}</p>
             <p><strong>Role Access:</strong> {transaction.accessType === "admin" ? "Admin" : "Reguler"}</p>
-            <p><strong>Username Akun:</strong> <span className="text-white font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.username}</span></p>
-            <p><strong>Password Akun:</strong> <span className="text-red-400 font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.password}</span></p>
-            <div>
-              <div className="flex items-center gap-2">
-                <strong>Pterodactyl User ID:</strong>
-                <span className="text-white font-mono">{panelData.userId}</span>
-                <CopyButton text={String(panelData.userId)} />
-              </div>
-            </div>
+            <div className="space-y-2">
+  <div className="flex items-center gap-2">
+    <strong>Username Akun:</strong>
+    <span className="text-white font-mono bg-dark-500 px-1.5 py-0.5 rounded">
+      {panelData.username}
+    </span>
+    <CopyButton text={String(panelData.username)} />
+  </div>
+
+  <div className="flex items-center gap-2">
+    <strong>Password Akun:</strong>
+    <span className="text-red-400 font-mono bg-dark-500 px-1.5 py-0.5 rounded">
+      {panelData.password}
+    </span>
+    <CopyButton text={String(panelData.password)} />
+  </div>
+
+  <div className="flex items-center gap-2">
+    <strong>Pterodactyl User ID:</strong>
+    <span className="text-white font-mono">
+      {panelData.userId}
+    </span>
+    <CopyButton text={String(panelData.userId)} />
+  </div>
+</div>
             <div>
               <strong>Link Login:</strong>
               <a href={panelData.loginUrl} target="_blank" rel="noopener noreferrer" className="ml-2 inline-flex items-center gap-1 text-red-400 hover:text-red-300 break-all">
