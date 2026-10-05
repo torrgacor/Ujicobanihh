@@ -187,10 +187,7 @@ export default function GaransiDetailPage() {
         <CardContent className="p-5 space-y-3 text-sm text-gray-300">
           <p><strong>ID Transaksi:</strong> {transactionId}</p>
           <p><strong>Paket:</strong> {transaction.planName}</p>
-          <p className="flex items-center gap-2">
-            <Layers className="w-4 h-4 text-red-400" />
-            <strong>Jumlah Panel Beli:</strong> <span className="font-semibold text-white bg-red-600/30 px-2 py-0.5 rounded border border-red-500/30">{displayQuantity}x Server</span>
-          </p>
+          <p><strong>Jumlah Panel:</strong> {displayQuantity}x Server</p>
           <p><strong>Email:</strong> {maskEmail(transaction.email)}</p>
           <p><strong>Status:</strong> <span className="text-green-400">Completed</span></p>
           {eggInfo && (
