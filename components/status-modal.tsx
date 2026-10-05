@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, CheckCircle, AlertCircle, Clock, Loader2, ExternalLink } from "lucide-react"
+import { X, CheckCircle, AlertCircle, Clock, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { CopyButton } from "./copy-button"
-import { pterodactylConfig } from "@/data/config"
 
 interface StatusModalProps {
   isOpen: boolean
@@ -13,14 +11,9 @@ interface StatusModalProps {
   type: "success" | "error" | "info" | "loading"
   title: string
   message: string
-  panelDetails?: {
-    username: string
-    password: string
-    serverId: number
-  } | null
 }
 
-export function StatusModal({ isOpen, onClose, type, title, message, panelDetails }: StatusModalProps) {
+export function StatusModal({ isOpen, onClose, type, title, message }: StatusModalProps) {
   const [isClosing, setIsClosing] = useState(false)
 
   useEffect(() => {
@@ -99,66 +92,6 @@ export function StatusModal({ isOpen, onClose, type, title, message, panelDetail
 
           <div className="p-5">
             <p className="mb-4 text-gray-300">{message}</p>
-
-            {panelDetails && (
-              <div className="mb-5 rounded-md bg-dark-500 p-4 border border-dark-300">
-                <h4 className="mb-3 font-medium text-white">Detail Panel</h4>
-
-                <div className="space-y-3">
-                    <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-gray-400 text-sm">URL Panel:</span>
-                      <CopyButton text={pterodactylConfig.domain} />
-                    </div>
-                      <div className="bg-dark-600 px-3 py-2 rounded text-gray-300 text-sm font-mono break-all">
-                      {pterodactylConfig.domain}
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-gray-400 text-sm">Username:</span>
-                      <CopyButton text={panelDetails.username} />
-                    </div>
-                    <div className="bg-dark-600 px-3 py-2 rounded text-gray-300 text-sm font-mono">
-                      {panelDetails.username}
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-gray-400 text-sm">Password:</span>
-                      <CopyButton text={panelDetails.password} />
-                    </div>
-                    <div className="bg-dark-600 px-3 py-2 rounded text-gray-300 text-sm font-mono">
-                      {panelDetails.password}
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-gray-400 text-sm">Server ID:</span>
-                      <CopyButton text={panelDetails.serverId.toString()} />
-                    </div>
-                    <div className="bg-dark-600 px-3 py-2 rounded text-gray-300 text-sm font-mono">
-                      {panelDetails.serverId}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4">
-                  <a
-                    href={pterodactylConfig.domain}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Login Sekarang
-                  </a>
-                </div>
-              </div>
-            )}
 
             <div className="flex justify-end">
               <Button
