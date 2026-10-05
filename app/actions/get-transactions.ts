@@ -4,6 +4,13 @@ import clientPromise from "@/lib/mongodb"
 import { appConfig } from "@/data/config"
 import { plans } from "@/data/plans"
 import { pterodactylConfig } from "@/data/config"
+import type { PaymentData } from "@/app/actions/create-payment"
+
+type TransactionDetails = Omit<PaymentData, "_id"> & {
+  planName: string
+  selectedEggName: string | null
+  replaceUsed?: number
+}
 
 export async function getSuccessfulTransactions() {
   try {
@@ -19,7 +26,7 @@ export async function getSuccessfulTransactions() {
       // Get egg name if selectedEggId exists
       let eggName = null
       if (transaction.selectedEggId) {
-        const config = pterodactylConfig[transaction.serverType as keyof typeof pterodactylConfig]
+        const config = transaction.serverType === "private" ? pterodactylConfig.private : pterodactylConfig.public
         const egg = config?.eggs?.find((e: any) => e.id === transaction.selectedEggId)
         eggName = egg?.nama || `Egg ID: ${transaction.selectedEggId}`
       }
@@ -42,13 +49,13 @@ export async function getSuccessfulTransactions() {
   }
 }
 
-export async function getTransactionById(transactionId: string) {
+export async function getTransactionById(transactionId: string): Promise<TransactionDetails | null> {
   try {
     const client = await clientPromise
     const db = client.db(appConfig.mongodb.dbName)
     const paymentsCollection = db.collection("payments")
 
-    const transaction = await paymentsCollection.findOne({ transactionId })
+    const transaction = await paymentsCollection.findOne({ transactionId }) as PaymentData | null
 
     if (!transaction) {
       return null
@@ -67,7 +74,7 @@ export async function getTransactionById(transactionId: string) {
     // Get egg name if selectedEggId exists
     let eggName = null
     if (transaction.selectedEggId) {
-      const config = pterodactylConfig[transaction.serverType as keyof typeof pterodactylConfig]
+      const config = transaction.serverType === "private" ? pterodactylConfig.private : pterodactylConfig.public
       const egg = config?.eggs?.find((e: any) => e.id === transaction.selectedEggId)
       eggName = egg?.nama || `Egg ID: ${transaction.selectedEggId}`
     }
@@ -76,7 +83,7 @@ export async function getTransactionById(transactionId: string) {
       ...transaction,
       planName: plan ? plan.name : "Unknown Plan",
       selectedEggName: eggName,
-    }
+    } as TransactionDetails
   } catch (error) {
     console.error("Error getting transaction by ID:", error)
     return null
