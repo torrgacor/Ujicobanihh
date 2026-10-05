@@ -245,6 +245,7 @@ export default function GaransiDetailPage() {
             <p><strong>Type:</strong> {transaction.serverType === "private" ? "Private Panel" : "Public Panel"}</p>
             <p><strong>Role Access:</strong> {transaction.accessType === "admin" ? "Admin" : "Reguler"}</p>
             <p><strong>Username Akun:</strong> <span className="text-white font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.username}</span></p>
+            <p><strong>Password Akun:</strong> <span className="text-red-400 font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.password}</span></p>
             <div>
               <div className="flex items-center gap-2">
                 <strong>Pterodactyl User ID:</strong>
@@ -258,8 +259,7 @@ export default function GaransiDetailPage() {
                 {panelData.loginUrl}<ExternalLink className="h-3.5 w-3.5 shrink-0" />
               </a>
             </div>
-            <p><strong>Password Akun:</strong> <span className="text-red-400 font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.password}</span></p>
-
+            
             {panelData.serverIds.length > 0 ? (
               <div className="mt-3 space-y-2 bg-dark-500 p-3 rounded-lg border border-dark-300">
                 <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Rincian Server:</p>
