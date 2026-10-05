@@ -27,6 +27,7 @@ type PanelData = {
   basePrice?: number
   discountAmount?: number
   fee?: number
+  transactionType?: "order" | "warranty_claim"
 }
 
 export async function createPanel(data: PanelData) {
@@ -49,6 +50,7 @@ export async function createPanel(data: PanelData) {
       basePrice,
       discountAmount,
       fee,
+      transactionType = "order",
     } = data
 
     const password = generatePassword(10)
@@ -111,15 +113,31 @@ export async function createPanel(data: PanelData) {
       serverType,
     ).catch(console.error)
     
+    const notificationDetails = {
+      transactionType,
+      serverType,
+      accessType,
+      selectedEggId,
+      memory,
+      disk,
+      cpu,
+      durationDays,
+      basePrice: basePrice ?? plan.price * quantity,
+      discountAmount,
+      fee,
+      total: total || plan.price * quantity,
+    }
+
     sendTelegramNotification(
-  userId,
-  idtransaksi,
-  createdAt,
-  plan.price * quantity,
-  plan.name,
-  email,
-  quantity
-).catch(console.error)
+      userId,
+      idtransaksi,
+      transactionType === "warranty_claim" ? new Date().toISOString() : createdAt,
+      plan.price * quantity,
+      plan.name,
+      email,
+      quantity,
+      notificationDetails,
+    ).catch(console.error)
       
       sendTelegramTestimonial(
   idtransaksi,
@@ -131,7 +149,7 @@ export async function createPanel(data: PanelData) {
   total || plan.price * quantity,
   durationDays,
   new Date().toISOString(),
-  { serverType, selectedEggId, memory, cpu, basePrice, discountAmount, fee }
+  { ...notificationDetails }
 ).catch(console.error)
 
     return {
