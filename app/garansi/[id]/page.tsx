@@ -242,6 +242,7 @@ export default function GaransiDetailPage() {
           </h3>
           
           <div className="text-sm text-gray-300 space-y-2">
+            <p><strong>User ID:</strong> {panelData.userId}</p>
             <p><strong>Type:</strong> {transaction.serverType === "private" ? "Private Panel" : "Public Panel"}</p>
             <p><strong>Role Access:</strong> {transaction.accessType === "admin" ? "Admin" : "Reguler"}</p>
             <div className="space-y-2">
@@ -260,15 +261,7 @@ export default function GaransiDetailPage() {
     </span>
     <CopyButton text={String(panelData.password)} />
   </div>
-
-  <div className="flex items-center gap-2">
-    <strong>Pterodactyl User ID:</strong>
-    <span className="text-white font-mono">
-      {panelData.userId}
-    </span>
-    <CopyButton text={String(panelData.userId)} />
-  </div>
-</div>
+            </div>
             <div>
               <strong>Link Login:</strong>
               <a href={panelData.loginUrl} target="_blank" rel="noopener noreferrer" className="ml-2 inline-flex items-center gap-1 text-red-400 hover:text-red-300 break-all">
