@@ -16,6 +16,7 @@ export interface PaymentData {
   _id?: ObjectId
   transactionId: string
   vpediaId: string
+  createdAt: string
   planId: string
   username: string
   email: string
@@ -27,7 +28,8 @@ export interface PaymentData {
   qrImageUrl: string
   expirationTime: string
   status: "pending" | "paid" | "completed" | "failed" | "expired"
-  selectedEggId?: number
+  selectedEggId?: number | null
+  replaceUsed?: number
   voucherCode?: string
   voucherDownloadUrl?: string
   discountType?: "percentage" | "nominal"
@@ -39,7 +41,7 @@ export interface PaymentData {
   panelDetails?: {
     username: string
     password: string
-    serverId: number
+    serverId: number | string
   }
   panelUserId?: number
   panelServerIds?: number[]
@@ -345,7 +347,7 @@ export async function updatePaymentStatus(
   panelDetails?: {
     username: string
     password: string
-    serverId: number
+    serverId: number | string
   },
   extra?: {
     panelUserId?: number
