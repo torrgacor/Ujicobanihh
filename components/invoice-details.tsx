@@ -16,8 +16,8 @@ interface InvoiceDetailsProps {
   fee: number
   total: number
   createdAt: string
-  status: "pending" | "paid" | "completed" | "failed"
-  selectedEggId?: number
+  status: "pending" | "paid" | "completed" | "failed" | "expired"
+  selectedEggId?: number | null
   selectedEggName?: string
   selectedEggPrice?: number
   quantity?: number
@@ -70,6 +70,13 @@ export function InvoiceDetails({
           <div className="status-badge status-failed">
             <AlertTriangle className="w-3 h-3 mr-1" />
             Gagal
+          </div>
+        )
+      case "expired":
+        return (
+          <div className="status-badge status-failed">
+            <AlertTriangle className="w-3 h-3 mr-1" />
+            Kedaluwarsa
           </div>
         )
       default:
