@@ -21,11 +21,18 @@ interface QrPaymentProps {
   total: number
   qrImageUrl: string
   expirationTime: string
-  status: "pending" | "paid" | "completed" | "failed"
+  status: "pending" | "paid" | "completed" | "failed" | "expired"
   username: string
   email: string
   planId: string
   createdAt: string
+  serverType: "public" | "private"
+  initialPanelDetails?: {
+    username: string
+    password: string
+    serverId: number | string
+    serverType: "public" | "private"
+  } | null
 }
 
 export function QrPayment({
@@ -40,6 +47,8 @@ export function QrPayment({
   email,
   planId,
   createdAt,
+  serverType,
+  initialPanelDetails = null,
 }: QrPaymentProps) {
   const [status, setStatus] = useState(initialStatus)
   const [isChecking, setIsChecking] = useState(false)
@@ -51,9 +60,9 @@ export function QrPayment({
   const [panelDetails, setPanelDetails] = useState<{
     username: string
     password: string
-    serverId: number
+    serverId: number | string
     serverType: "public" | "private"
-  } | null>(null)
+  } | null>(initialPanelDetails)
 
   // Get plan name from planId
   const getPlanName = (id: string) => {
@@ -61,7 +70,7 @@ export function QrPayment({
     return plan ? plan.name : "Unknown"
   }
 
-  const saveTransactionToHistory = (status: "pending" | "paid" | "completed" | "failed", details?: any) => {
+  const saveTransactionToHistory = (status: "pending" | "paid" | "completed" | "failed" | "expired") => {
     try {
       const existingHistory = localStorage.getItem("transactionHistory")
       let history = existingHistory ? JSON.parse(existingHistory) : []
@@ -79,7 +88,6 @@ export function QrPayment({
         total,
         createdAt,
         status,
-        panelDetails: details || undefined,
       }
 
       if (existingIndex !== -1) {
@@ -118,13 +126,13 @@ export function QrPayment({
       if (result.success) {
         if (result.status === "completed") {
           setStatus("completed")
-          setPanelDetails(result.panelDetails || null)
+          setPanelDetails(result.panelDetails ? { ...result.panelDetails, serverType } : null)
           setModalType("success")
           setModalTitle("Pembayaran Berhasil")
           setModalMessage("Panel Anda telah berhasil dibuat dan detail akun telah dikirim ke email Anda.")
           setShowModal(true)
 
-          saveTransactionToHistory("completed", result.panelDetails)
+          saveTransactionToHistory("completed")
 
           if (result.showWhatsappPopup) {
             setTimeout(() => {
@@ -174,9 +182,9 @@ export function QrPayment({
           if (result.success) {
             if (result.status === "completed") {
               setStatus("completed")
-              setPanelDetails(result.panelDetails || null)
+              setPanelDetails(result.panelDetails ? { ...result.panelDetails, serverType } : null)
 
-              saveTransactionToHistory("completed", result.panelDetails)
+              saveTransactionToHistory("completed")
 
               if (result.showWhatsappPopup) {
                 setTimeout(() => {
@@ -208,7 +216,6 @@ export function QrPayment({
         type={modalType}
         title={modalTitle}
         message={modalMessage}
-        panelDetails={panelDetails}
       />
 
       <WhatsappGroupPopup isOpen={showWhatsappPopup} onClose={() => setShowWhatsappPopup(false)} />
