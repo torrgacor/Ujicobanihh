@@ -187,7 +187,9 @@ export default function GaransiDetailPage() {
         <CardContent className="p-5 space-y-3 text-sm text-gray-300">
           <p><strong>ID Transaksi:</strong> {transactionId}</p>
           <p><strong>Paket:</strong> {transaction.planName}</p>
-          <p><strong>Jumlah Panel:</strong> {displayQuantity}x Server</p>
+          <p className="flex items-center gap-2">
+            <Layers className="w-4 h-4 text-red-400" />
+            <strong>Jumlah Panel Beli:</strong> <span className="font-semibold text-white bg-red-600/30 px-2 py-0.5 rounded border border-red-500/30">{displayQuantity}x Server</span>
           </p>
           <p><strong>Email:</strong> {maskEmail(transaction.email)}</p>
           <p><strong>Status:</strong> <span className="text-green-400">Completed</span></p>
@@ -246,7 +248,6 @@ export default function GaransiDetailPage() {
             <p><strong>Type:</strong> {transaction.serverType === "private" ? "Private Panel" : "Public Panel"}</p>
             <p><strong>Role Access:</strong> {transaction.accessType === "admin" ? "Admin" : "Reguler"}</p>
             <p><strong>Username Akun:</strong> <span className="text-white font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.username}</span></p>
-            <p><strong>Password Akun:</strong> <span className="text-red-400 font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.password}</span></p>
             <div>
               <div className="flex items-center gap-2">
                 <strong>Pterodactyl User ID:</strong>
@@ -260,6 +261,7 @@ export default function GaransiDetailPage() {
                 {panelData.loginUrl}<ExternalLink className="h-3.5 w-3.5 shrink-0" />
               </a>
             </div>
+            <p><strong>Password Akun:</strong> <span className="text-red-400 font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.password}</span></p>
 
             {panelData.serverIds.length > 0 ? (
               <div className="mt-3 space-y-2 bg-dark-500 p-3 rounded-lg border border-dark-300">
