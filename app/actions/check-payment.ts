@@ -16,6 +16,10 @@ const API_STATUS_URL = "https://sakurupiah.id/api/status-transaction.php"
 
 export async function checkPaymentStatus(transactionId: string) {
   try {
+    if (!API_ID || !API_KEY) {
+      return { success: false, error: "Konfigurasi pembayaran belum lengkap" }
+    }
+
     const payment = await getPayment(transactionId)
     if (!payment) {
       return { success: false, error: "Pembayaran tidak ditemukan" }
@@ -123,8 +127,8 @@ export async function checkPaymentStatus(transactionId: string) {
         planId: payment.planId,
         createdAt: payment.createdAt,
         serverType: payment.serverType, 
-        accessType: payment.accessType, 
-        selectedEggId: payment.selectedEggId,
+        accessType: payment.accessType === "admin" ? "admin" : "reguler",
+        selectedEggId: payment.selectedEggId ?? undefined,
         quantity: payment.quantity,
         total: payment.total || payment.amount,
         durationDays: payment.durationDays,
@@ -173,10 +177,8 @@ export async function checkPaymentStatus(transactionId: string) {
         serverType: payment.serverType,
       }
       
-      const masaAktifHari = payment.durationDays ?? plan.durationDays ?? 30
-const ms = typeof masaAktifHari === "string"
-  ? parseInt(masaAktifHari) * (masaAktifHari.endsWith("m") ? 60000 : masaAktifHari.endsWith("h") ? 3600000 : 86400000)
-  : masaAktifHari * 86400000
+      const masaAktifHari = String(payment.durationDays ?? plan.durationDays ?? 30)
+      const ms = parseInt(masaAktifHari, 10) * (masaAktifHari.endsWith("m") ? 60000 : masaAktifHari.endsWith("h") ? 3600000 : 86400000)
 const expiresAt = new Date(Date.now() + ms).toISOString()
 
       await updatePaymentStatus(transactionId, "completed", panelDetails, {
