@@ -12,8 +12,10 @@ import { getTransactionById, updateTransactionReplace } from "@/app/actions/get-
 import { checkUserExists } from "@/app/actions/check-user-exists"
 import { createPanel } from "@/app/actions/create-panel"
 import { appConfig } from "@/data/config"
+import { pterodactylConfig } from "@/data/config"
 import { plans } from "@/data/plans"
-import { Loader2, ShieldCheck, AlertTriangle, Server, Egg, Layers } from "lucide-react"
+import { Loader2, ShieldCheck, AlertTriangle, Server, Egg, Layers, ExternalLink } from "lucide-react"
+import { CopyButton } from "@/components/copy-button"
 
 export default function GaransiDetailPage() {
   const router = useRouter()
@@ -113,20 +115,27 @@ export default function GaransiDetailPage() {
         planId: transaction.planId,
         createdAt: transaction.createdAt,
         serverType: transaction.serverType,
-        accessType: transaction.accessType,
-        selectedEggId: transaction.selectedEggId,
+        accessType: transaction.accessType === "admin" ? "admin" : "reguler",
+        selectedEggId: transaction.selectedEggId ?? undefined,
         quantity: transaction.quantity || 1,
+        total: transaction.total || transaction.amount,
+        durationDays: transaction.durationDays,
+        basePrice: (transaction.amount || 0) + (transaction.discountAmount || 0),
+        discountAmount: transaction.discountAmount,
+        fee: transaction.fee,
+        transactionType: "warranty_claim",
       })
 
-      if (!panel.success) throw new Error(panel.error || "Gagal membuat panel baru")
+      if (!panel.success) throw new Error("Gagal membuat panel baru")
 
       await updateTransactionReplace(transactionId)
 
       setPanelData({
         username: transaction.username,
-        password: panel.password, 
-        serverId: panel.serverId,
-        servers: panel.servers || [] 
+        password: panel.password,
+        userId: panel.userId,
+        serverIds: panel.serverIds || [],
+        loginUrl: pterodactylConfig[transaction.serverType as "public" | "private"].domain,
       })
 
       toast({
@@ -239,25 +248,32 @@ export default function GaransiDetailPage() {
             <p><strong>Type:</strong> {transaction.serverType === "private" ? "Private Panel" : "Public Panel"}</p>
             <p><strong>Role Access:</strong> {transaction.accessType === "admin" ? "Admin" : "Reguler"}</p>
             <p><strong>Username Akun:</strong> <span className="text-white font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.username}</span></p>
-            
-            {panelData.servers && panelData.servers.length > 0 ? (
+            <div>
+              <div className="flex items-center gap-2">
+                <strong>Pterodactyl User ID:</strong>
+                <span className="text-white font-mono">{panelData.userId}</span>
+                <CopyButton text={String(panelData.userId)} />
+              </div>
+            </div>
+            <div>
+              <strong>Link Login:</strong>
+              <a href={panelData.loginUrl} target="_blank" rel="noopener noreferrer" className="ml-2 inline-flex items-center gap-1 text-red-400 hover:text-red-300 break-all">
+                {panelData.loginUrl}<ExternalLink className="h-3.5 w-3.5 shrink-0" />
+              </a>
+            </div>
+            <p><strong>Password Akun:</strong> <span className="text-red-400 font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.password}</span></p>
+
+            {panelData.serverIds.length > 0 ? (
               <div className="mt-3 space-y-2 bg-dark-500 p-3 rounded-lg border border-dark-300">
-                <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Rincian Multi-Server:</p>
-                {panelData.servers.map((srv: any, index: number) => (
+                <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Rincian Server:</p>
+                {panelData.serverIds.map((serverId: number, index: number) => (
                   <div key={index} className="text-xs border-l-2 border-red-500 pl-2 py-0.5">
                     <p className="text-gray-200 font-medium">Server #{index + 1}</p>
-                    <p className="text-gray-400 font-mono">ID: {srv.serverId || srv.id}</p>
-                    {srv.password && <p className="text-gray-400">Password: <span className="text-red-400">{srv.password}</span></p>}
+                    <p className="text-gray-400 font-mono">Server ID: {serverId}</p>
                   </div>
                 ))}
               </div>
-            ) : (
-              
-              <div className="space-y-1">
-                <p><strong>Password Akun:</strong> <span className="text-red-400 font-mono bg-dark-500 px-1.5 py-0.5 rounded">{panelData.password}</span></p>
-                <p><strong>Server ID:</strong> <span className="text-gray-400 font-mono">{panelData.serverId}</span></p>
-              </div>
-            )}
+            ) : null}
 
             {eggInfo && (
               <p className="flex items-center gap-2 pt-1 text-xs text-gray-400">
