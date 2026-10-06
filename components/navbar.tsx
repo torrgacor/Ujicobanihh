@@ -166,7 +166,7 @@ export default function Navbar() {
             href={appConfig.LinkTutorial}
             label="Tutorial"
             onClick={() => setIsOpen(false)}
-            icon={<Users className="w-4 h-4 mr-2" />}
+            icon={<MonitorPlay className="w-4 h-4 mr-2" />}
             external
           />
         </div>
