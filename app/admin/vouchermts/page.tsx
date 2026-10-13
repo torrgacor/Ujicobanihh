@@ -429,6 +429,13 @@ export default function AdminVoucherManagementPage() {
             <Users className="w-4 h-4 mr-2" />
             Kelola Affiliate
           </Button>
+          <Button
+            variant="outline"
+            onClick={() => router.push("/admin/iklan")}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white border-0"
+          >
+            Iklan & Sosial Media
+          </Button>
         </div>
 
         {/* Tab Content */}
