@@ -8,6 +8,7 @@ import { StatsSection } from "@/components/stats-section"
 import { Footer } from "@/components/footer"
 import { FaqSection } from "@/components/faq"
 import KomponenStatistik from "@/components/indikator-node"
+import { HomepageAdvertisement } from "@/components/homepage-advertisement"
 
 export default function Home() {
   return (
@@ -19,8 +20,8 @@ export default function Home() {
 
         <section className="min-h-screen flex items-center justify-center pt-16 pb-20 px-4">
           <div className="container mx-auto">
-            <Card className="max-w-2xl mx-auto shadow-2xl border-dark-300 overflow-hidden animate-slide-up bg-dark-400">
-              <div className="h-3 bg-gradient-to-r from-red-600 to-red-800"></div>
+            <HomepageAdvertisement />
+            <Card className="max-w-5xl mx-auto overflow-hidden animate-slide-up border-0 bg-transparent shadow-none">
               <CardContent className="p-8">
                 <PanelForm />
               </CardContent>
