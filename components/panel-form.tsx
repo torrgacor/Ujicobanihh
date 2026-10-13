@@ -289,7 +289,7 @@ export default function PanelForm() {
 
   return (
     <>
-      <div className="rounded-3xl border border-dark-300 bg-dark-500 p-5 mb-6">
+      <div className="mb-6 bg-transparent p-0">
         <h1 className="text-1xl font-semibold text-white">Selamat Datang</h1>
         <p className="mt-2 text-sm text-gray-400">
           Bingung cari tempat toko panel yang legal, aman dan murah dimana?
