@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { ArrowLeft } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import AdminWithdrawQueue from "@/components/admin/withdraw-queue"
 import AffiliatesManage from "@/components/admin/affiliates-manage"
@@ -63,11 +64,12 @@ export default async function AdminAffiliatesPage() {
           <p className="text-sm text-muted-foreground">Kelola akun affiliate, cek status, dan proses penarikan secara manual.</p>
         </div>
         <div className="flex gap-2">
-          <Link href="/admin/vouchermts" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">
-            Kelola Voucher
-          </Link>
-          <Link href="/admin/cron" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">
-            Kelola Cron Job
+          <Link 
+            href="/admin/vouchermts" 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 bg-slate-950/70 text-slate-300 hover:bg-slate-900 transition-colors hover:text-white"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span>Kembali ke Panel</span>
           </Link>
         </div>
       </div>
