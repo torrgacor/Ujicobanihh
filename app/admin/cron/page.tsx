@@ -30,7 +30,7 @@ export default async function AdminCronPage() {
             </p>
           </div>
           <Link 
-            href="/admin/affiliate" 
+            href="/admin/vouchermts" 
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 bg-slate-950/70 text-slate-300 hover:bg-slate-900 transition-colors hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
