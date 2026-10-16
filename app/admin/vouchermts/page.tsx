@@ -431,6 +431,14 @@ export default function AdminVoucherManagementPage() {
           </Button>
           <Button
             variant="outline"
+            onClick={() => router.push("/admin/cron")}
+            className="bg-yellow-600 hover:bg-yellow-700 text-white border-0"
+          >
+            <Search className="w-4 h-4 mr-2" />
+            Kelola Cron
+          </Button>
+          <Button
+            variant="outline"
             onClick={() => router.push("/admin/iklan")}
             className="bg-emerald-600 hover:bg-emerald-700 text-white border-0"
           >
