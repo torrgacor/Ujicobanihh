@@ -90,23 +90,26 @@ export async function getTransactionById(transactionId: string): Promise<Transac
   }
 }
 
-export async function updateTransactionReplace(id: string) {
+export async function updateTransactionReplace(id: string, panelUserId: number, panelServerIds: number[]) {
   try {
     const client = await clientPromise
     const db = client.db(appConfig.mongodb.dbName)
     const paymentsCollection = db.collection("payments")
 
-    const trx = await paymentsCollection.findOne({ transactionId: id })
-    if (!trx) return null
-
-    const newReplaceUsed = (trx.replaceUsed || 0) + 1
-
-    await paymentsCollection.updateOne(
-      { transactionId: id },
-      { $set: { replaceUsed: newReplaceUsed } }
+    const result = await paymentsCollection.updateOne(
+      { transactionId: id, status: "completed" },
+      {
+        $set: { panelUserId, panelServerIds },
+        $inc: { replaceUsed: 1 },
+      }
     )
 
-    return { success: true, replaceUsed: newReplaceUsed }
+    if (result.matchedCount === 0) {
+      return { success: false, error: "Transaksi tidak ditemukan atau belum selesai" }
+    }
+
+    const transaction = await paymentsCollection.findOne({ transactionId: id })
+    return { success: true, replaceUsed: transaction?.replaceUsed }
   } catch (error) {
     console.error("Error updating transaction replace:", error)
     return { success: false, error: (error as Error).message }

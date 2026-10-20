@@ -128,7 +128,10 @@ export default function GaransiDetailPage() {
 
       if (!panel.success) throw new Error("Gagal membuat panel baru")
 
-      await updateTransactionReplace(transactionId)
+      const updatedTransaction = await updateTransactionReplace(transactionId, panel.userId, panel.serverIds)
+      if (!updatedTransaction?.success) {
+        throw new Error(updatedTransaction?.error || "Gagal menyimpan ID panel garansi")
+      }
 
       setPanelData({
         username: transaction.username,
