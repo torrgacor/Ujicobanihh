@@ -39,7 +39,7 @@ export const plans: Plan[] = [
     price: 4000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗥𝗶𝗻𝗴𝗮𝗻",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot6gb",
@@ -52,7 +52,7 @@ export const plans: Plan[] = [
     price: 5000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot7gb",
@@ -65,7 +65,7 @@ export const plans: Plan[] = [
     price: 6000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot8gb",
@@ -78,7 +78,7 @@ export const plans: Plan[] = [
     price: 7000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot9gb",
@@ -91,7 +91,7 @@ export const plans: Plan[] = [
     price: 8000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot10gb",
@@ -104,7 +104,7 @@ export const plans: Plan[] = [
     price: 9000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot11gb",
@@ -117,7 +117,7 @@ export const plans: Plan[] = [
     price: 10000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot12gb",
@@ -130,7 +130,7 @@ export const plans: Plan[] = [
     price: 11000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot13gb",
@@ -143,7 +143,7 @@ export const plans: Plan[] = [
     price: 12000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot14gb",
@@ -156,7 +156,7 @@ export const plans: Plan[] = [
     price: 13000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot15gb",
@@ -169,7 +169,7 @@ export const plans: Plan[] = [
     price: 14000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "botunlimited",
@@ -182,7 +182,7 @@ export const plans: Plan[] = [
     price: 15000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗕𝗶𝘀𝗻𝗶𝘀 𝗨𝗻𝘁𝘂𝗸 𝗦𝗲𝗺𝘂𝗮 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   
   
@@ -199,7 +199,7 @@ export const plans: Plan[] = [
     price: 5000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗥𝗶𝗻𝗴𝗮𝗻",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot6gb-private",
@@ -212,7 +212,7 @@ export const plans: Plan[] = [
     price: 6000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot7gb-private",
@@ -225,7 +225,7 @@ export const plans: Plan[] = [
     price: 7000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot8gb-private",
@@ -238,7 +238,7 @@ export const plans: Plan[] = [
     price: 8000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot9gb-private",
@@ -251,7 +251,7 @@ export const plans: Plan[] = [
     price: 9000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot10gb-private",
@@ -264,7 +264,7 @@ export const plans: Plan[] = [
     price: 10000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗠𝗲𝗻𝗲𝗻𝗴𝗮𝗵",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot11gb-private",
@@ -277,7 +277,7 @@ export const plans: Plan[] = [
     price: 11000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot12gb-private",
@@ -290,7 +290,7 @@ export const plans: Plan[] = [
     price: 12000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot13gb-private",
@@ -303,7 +303,7 @@ export const plans: Plan[] = [
     price: 13000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot14gb-private",
@@ -316,7 +316,7 @@ export const plans: Plan[] = [
     price: 14000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "bot15gb-private",
@@ -329,7 +329,7 @@ export const plans: Plan[] = [
     price: 15000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿 𝗨𝗻𝘁𝘂𝗸 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁 𝗦𝘁𝗮𝗻𝗱𝗮𝗿",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
   {
     id: "botunlimited-private",
@@ -342,7 +342,7 @@ export const plans: Plan[] = [
     price: 17000,
     durationDays: 30,
     description: "𝗣𝗮𝗸𝗲𝘁 𝗕𝗶𝘀𝗻𝗶𝘀 𝗨𝗻𝘁𝘂𝗸 𝗦𝗲𝗺𝘂𝗮 𝗦𝗰𝗿𝗶𝗽𝘁 𝗕𝗼𝘁",
-    features: ["Akses Admin 1 Orang (Pemilik Server)", "Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
+    features: ["Full Akses Panel Bot Pterodactyl", "Support Egg Node.js 15 - 24", "Support Egg Python 2.7 - 3.13", "Bebas Ganti Script", "Server Private dan Terjaga", "Keamanan Data dan Privasi Terjamin", "Aman Dari Pencurian Files", "Server Aktif 24 Jam NonStop"],
   },
 
   // Public Plans - Admin Access
