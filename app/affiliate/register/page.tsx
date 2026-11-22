@@ -203,7 +203,6 @@ export default function AffiliateRegisterPage() {
                   <p className="text-xs text-yellow-400 mt-1">
   ⚠️ Pastikan nomor dan nama rekening sudah benar dan sesuai dengan data pemilik rekening. Kesalahan pengisian dapat menyebabkan kendala pada proses penarikan.
                  </p>
-                 </div>
                 </div>
               </div>
 
