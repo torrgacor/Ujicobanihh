@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, BadgeCheck, CreditCard, Gift, ShieldCheck, TrendingUp, Wallet, Zap } from "lucide-react"
+import { ArrowRight, BadgeCheck, CreditCard, Gift, ShieldCheck, TrendingUp, Wallet, Zap, Sparkles } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -103,7 +103,7 @@ export default async function AffiliateLandingPage() {
       <section className="border-b border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-20 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div className="max-w-2xl space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sm text-sky-100">
+            <div className="inline-flex items-center gap-2 rounded-full border border-red-400/40 bg-red-500/10 px-3 py-1 text-sm text-red-100">
             <Sparkles className="h-4 w-4" />
             Program Affiliate TokoPanel
           </div>
