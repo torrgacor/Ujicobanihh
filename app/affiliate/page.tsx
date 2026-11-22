@@ -142,7 +142,7 @@ export default async function AffiliateLandingPage() {
                 <p className="text-2xl font-semibold text-white">Rp {minWithdraw.toLocaleString("id-ID")}</p>
               </div>
               <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4">
-                <p className="text-sm text-sky-300">Persentase Komisi</p>
+                <p className="text-sm text-red-300">Persentase Komisi</p>
                 <p className="text-2xl font-semibold text-white">15% - 35%</p>
               </div>
               <div className="space-y-3">
@@ -154,7 +154,7 @@ export default async function AffiliateLandingPage() {
                 <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3 text-center">
                   <p className="text-sm text-slate-400">Total Transaksi</p>
                   <p className="text-2xl font-semibold text-white">{totalTransactions}</p>
-                  <p className="text-sm font-semibold text-sky-300">Transaksi Affiliator</p>
+                  <p className="text-sm font-semibold text-red-300">Transaksi Affiliator</p>
                 </div>
               </div>
             </CardContent>
@@ -197,7 +197,7 @@ export default async function AffiliateLandingPage() {
                     <p className="font-semibold text-white">{level.name}</p>
                     <p className="text-sm text-slate-400">Minimal {level.threshold} transaksi</p>
                   </div>
-                  <Badge className="bg-blue-500/15 text-blue-300 hover:bg-blue-500/20">
+                  <Badge className="bg-red-500/15 text-red-300 hover:bg-red-500/20">
                     {level.commissionPercent}% komisi
                   </Badge>
                 </div>
@@ -276,7 +276,7 @@ export default async function AffiliateLandingPage() {
                           </TableCell>
                           <TableCell className="font-medium text-white">{a.storeName}</TableCell>
                           <TableCell className="text-center">
-                            <span className="inline-block rounded-lg bg-blue-500/20 px-3 py-1 font-semibold text-blue-300">
+                            <span className="inline-block rounded-lg bg-red-500/20 px-3 py-1 font-semibold text-red-300">
                               {a.transactionCount}
                             </span>
                           </TableCell>
