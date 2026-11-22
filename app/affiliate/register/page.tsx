@@ -119,9 +119,9 @@ export default function AffiliateRegisterPage() {
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.2),_transparent_45%),linear-gradient(135deg,_#07111f_0%,_#111827_100%)] px-4 py-10 text-white">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 lg:flex-row lg:items-start">
         <div className="max-w-xl space-y-6 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-red-400/40 bg-red-500/10 px-3 py-1 text-sm text-red-100">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sm text-sky-100">
             <Sparkles className="h-4 w-4" />
-            Program Affiliate TokoPanel
+            Dashboard Registrasi Affiliate
           </div>
           <div className="space-y-3">
             <h1 className="text-4xl font-semibold leading-tight">Daftar sebagai affiliate dan raih komisi dari setiap penjualan</h1>
