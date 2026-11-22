@@ -124,7 +124,7 @@ export default function AffiliateRegisterPage() {
             Dashboard Registrasi Affiliate
           </div>
           <div className="space-y-3">
-            <h1 className="text-4xl font-semibold leading-tight">DAFTAR SEBAGAI AFFILIATE DAN RAIH KOMISI DARI SETIAP PENJUALAN</h1>
+            <h1 className="text-4xl font-semibold leading-tight">Daftar Sebagai Affiliate dan Raih Komisi Dari Setiap Penjualan</h1>
             <p className="text-sm text-slate-300 sm:text-base">
               Bangun Jaringan Anda, Bagikan Referral Link, dan Pantau Hasilnya Dari Dashboard Yang Terintegrasi.
             </p>
