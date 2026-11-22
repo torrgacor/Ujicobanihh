@@ -99,11 +99,11 @@ export default async function AffiliateLandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(20,184,166,0.1),_transparent_35%),linear-gradient(135deg,_#050505_0%,_#111827_100%)] text-white">
       <section className="border-b border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-20 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div className="max-w-2xl space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-400/40 bg-red-500/10 px-3 py-1 text-sm text-red-100">
+            <div className="inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-sm text-teal-200">
             <Sparkles className="h-4 w-4" />
             Program Affiliate TokoPanel
           </div>
@@ -116,21 +116,21 @@ export default async function AffiliateLandingPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg" className="bg-red-500 hover:bg-red-600">
+              <Button asChild size="lg" className="bg-teal-600 hover:bg-teal-500">
                 <Link href="/affiliate/register">
                   Daftar Sekarang <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-slate-700 bg-slate-900/70 text-white hover:bg-slate-800">
+              <Button asChild variant="outline" size="lg" className="border-white/10 bg-zinc-900 text-white hover:bg-zinc-800">
                 <Link href="/affiliate/login">Login Akun</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-slate-700 bg-slate-900/70 text-white hover:bg-slate-800">
+              <Button asChild variant="outline" size="lg" className="border-white/10 bg-zinc-900 text-white hover:bg-zinc-800">
                 <Link href="/affiliate/dashboard">Ke Dashboard</Link>
               </Button>
             </div>
           </div>
 
-          <Card className="w-full max-w-xl border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/30">
+          <Card className="w-full max-w-xl border-white/10 bg-zinc-950/85 shadow-2xl shadow-black/50 backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="text-2xl">Ringkasan Program</CardTitle>
               <CardDescription className="text-slate-400">
@@ -138,24 +138,24 @@ export default async function AffiliateLandingPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4">
-                <p className="text-sm text-red-300">Minimal Penarikan</p>
+              <div className="rounded-xl border border-teal-400/20 bg-teal-500/10 p-4">
+                <p className="text-sm text-teal-200">Minimal Penarikan</p>
                 <p className="text-2xl font-semibold text-white">Rp {minWithdraw.toLocaleString("id-ID")}</p>
               </div>
-              <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4">
-                <p className="text-sm text-red-300">Persentase Komisi</p>
+              <div className="rounded-xl border border-sky-400/20 bg-sky-500/10 p-4">
+                <p className="text-sm text-sky-200">Persentase Komisi</p>
                 <p className="text-2xl font-semibold text-white">15% - 35%</p>
               </div>
               <div className="space-y-3">
-                <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3 text-center">
+                <div className="rounded-xl border border-white/10 bg-zinc-900/80 p-3 text-center">
                   <p className="text-sm text-slate-400">Total Affiliator</p>
                   <p className="text-2xl font-semibold text-white">{activeCount}</p>
-                  <p className="text-sm font-semibold text-red-300">Pengguna Aktif</p>
+                  <p className="text-sm font-semibold text-emerald-300">Pengguna Aktif</p>
                 </div>
-                <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3 text-center">
+                <div className="rounded-xl border border-white/10 bg-zinc-900/80 p-3 text-center">
                   <p className="text-sm text-slate-400">Total Transaksi</p>
                   <p className="text-2xl font-semibold text-white">{totalTransactions}</p>
-                  <p className="text-sm font-semibold text-red-300">Transaksi Affiliator</p>
+                  <p className="text-sm font-semibold text-amber-300">Transaksi Affiliator</p>
                 </div>
               </div>
             </CardContent>
@@ -168,9 +168,9 @@ export default async function AffiliateLandingPage() {
           {features.map((feature) => {
             const Icon = feature.icon
             return (
-              <Card key={feature.title} className="border-slate-800 bg-slate-900/60">
+              <Card key={feature.title} className="border border-white/10 bg-zinc-950/75 shadow-lg backdrop-blur-xl">
                 <CardHeader>
-                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-red-500/15 text-red-300">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-teal-500/10 text-teal-300">
                     <Icon className="h-5 w-5" />
                   </div>
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
@@ -184,7 +184,7 @@ export default async function AffiliateLandingPage() {
         </section>
 
         <section className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <Card className="border-slate-800 bg-slate-900/70">
+          <Card className="border border-white/10 bg-zinc-950/75 shadow-lg backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="text-2xl">Tingkat Komisi & Level Affiliate</CardTitle>
               <CardDescription className="text-slate-400">
@@ -193,12 +193,12 @@ export default async function AffiliateLandingPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               {levels.map((level) => (
-                <div key={level.name} className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/70 px-4 py-3">
+                <div key={level.name} className="flex items-center justify-between rounded-xl border border-white/10 bg-zinc-900/80 px-4 py-3">
                   <div>
                     <p className="font-semibold text-white">{level.name}</p>
                     <p className="text-sm text-slate-400">Minimal {level.threshold} transaksi</p>
                   </div>
-                  <Badge className="bg-red-500/15 text-red-300 hover:bg-red-500/20">
+                  <Badge className="bg-teal-500/10 text-teal-300 hover:bg-teal-500/20">
                     {level.commissionPercent}% komisi
                   </Badge>
                 </div>
@@ -206,7 +206,7 @@ export default async function AffiliateLandingPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-slate-800 bg-slate-900/70">
+          <Card className="border border-white/10 bg-zinc-950/75 shadow-lg backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="text-2xl">Metode Withdrawal & Keuntungan</CardTitle>
               <CardDescription className="text-slate-400">
@@ -216,9 +216,9 @@ export default async function AffiliateLandingPage() {
             <CardContent className="space-y-5">
               <div className="space-y-3">
                 {paymentMethods.map((method) => (
-                  <div key={method.title} className="rounded-xl border border-slate-800 bg-slate-950/70 p-4">
+                  <div key={method.title} className="rounded-xl border border-white/10 bg-zinc-900/80 p-4">
                     <div className="mb-1 flex items-center gap-2">
-                      <CreditCard className="h-4 w-4 text-red-300" />
+                      <CreditCard className="h-4 w-4 text-sky-300" />
                       <p className="font-medium text-white">{method.title}</p>
                     </div>
                     <p className="text-sm text-slate-400">{method.description}</p>
@@ -226,8 +226,8 @@ export default async function AffiliateLandingPage() {
                 ))}
               </div>
 
-              <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4">
-                <p className="flex items-center gap-2 text-sm font-medium text-red-300">
+              <div className="rounded-xl border border-amber-400/15 bg-amber-500/10 p-4">
+                <p className="flex items-center gap-2 text-sm font-medium text-amber-200">
                   <BadgeCheck className="h-4 w-4" />
                   Keuntungan utama
                 </p>
@@ -243,7 +243,7 @@ export default async function AffiliateLandingPage() {
         </section>
 
         <section className="mt-16 space-y-6">
-          <Card className="border border-white/10 bg-slate-950/70 shadow-lg backdrop-blur-xl">
+          <Card className="border border-white/10 bg-zinc-950/75 shadow-lg backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-white">
                 <Zap className="h-5 w-5 text-yellow-400" />
@@ -260,7 +260,7 @@ export default async function AffiliateLandingPage() {
                 <div className="overflow-x-auto">
                   <Table>
                     <TableHeader>
-                      <TableRow className="border-white/10 hover:bg-slate-900/50">
+                      <TableRow className="border-white/10 hover:bg-zinc-900/70">
                         <TableHead className="text-white">Ranking</TableHead>
                         <TableHead className="text-white">Nama Toko</TableHead>
                         <TableHead className="text-center text-white">📈 Transaksi</TableHead>
@@ -269,19 +269,19 @@ export default async function AffiliateLandingPage() {
                     </TableHeader>
                     <TableBody>
                       {affiliateStats.map((a, idx) => (
-                        <TableRow key={`${a.storeName}-${idx}`} className="border-white/10 hover:bg-slate-900/50">
+                        <TableRow key={`${a.storeName}-${idx}`} className="border-white/10 hover:bg-zinc-900/70">
                           <TableCell>
-                            <span className="inline-block rounded-lg bg-gradient-to-r from-black-500 to-red-500 px-3 py-1 font-bold text-white">
+                            <span className="inline-block rounded-lg bg-gradient-to-r from-teal-700 to-sky-600 px-3 py-1 font-bold text-white">
                               #{idx + 1}
                             </span>
                           </TableCell>
                           <TableCell className="font-medium text-white">{a.storeName}</TableCell>
                           <TableCell className="text-center">
-                            <span className="inline-block rounded-lg bg-red-500/20 px-3 py-1 font-semibold text-red-300">
+                            <span className="inline-block rounded-lg bg-sky-500/10 px-3 py-1 font-semibold text-sky-300">
                               {a.transactionCount}
                             </span>
                           </TableCell>
-                          <TableCell className="text-right font-semibold text-red-400">{formatRupiah(a.totalCommission ?? 0)}</TableCell>
+                          <TableCell className="text-right font-semibold text-emerald-300">{formatRupiah(a.totalCommission ?? 0)}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -292,16 +292,16 @@ export default async function AffiliateLandingPage() {
           </Card>
         </section>
 
-        <section className="mt-16 rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-900/90 to-slate-950/90 p-8 text-center">
+        <section className="mt-16 rounded-3xl border border-white/10 bg-gradient-to-r from-zinc-950/90 to-slate-950/90 p-8 text-center">
           <h2 className="text-3xl font-semibold text-white">Siap menjadi affiliate andalan?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-slate-400">
             Daftar sekarang dan mulai dapatkan komisi dari setiap pelanggan yang Anda referensikan.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Button asChild size="lg" className="bg-red-500 hover:bg-red-600">
+            <Button asChild size="lg" className="bg-teal-600 hover:bg-teal-500">
               <Link href="/affiliate/register">Registrasi Affiliate</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-slate-700 bg-slate-950/70 text-white hover:bg-slate-800">
+            <Button asChild variant="outline" size="lg" className="border-white/10 bg-zinc-900 text-white hover:bg-zinc-800">
               <Link href="/affiliate/login">Masuk ke Akun</Link>
             </Button>
           </div>
