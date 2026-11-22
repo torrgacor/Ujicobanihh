@@ -53,7 +53,7 @@ export default function WithdrawForm({
   }
 
   return (
-    <Card className="space-y-4">
+    <Card className="space-y-4 border border-white/10 bg-zinc-950/75 text-white">
       <CardHeader>
         <CardTitle>Ajukan Withdraw</CardTitle>
         <CardDescription>Withdraw akan dikirim ke rekening yang Anda daftarkan. Hubungi admin jika ingin memperbarui data rekening.</CardDescription>
@@ -69,9 +69,10 @@ export default function WithdrawForm({
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
               placeholder="50000"
+              className="border-white/10 bg-zinc-900 text-white placeholder:text-slate-500 focus-visible:ring-teal-500"
             />
           </div>
-          <div className="space-y-2 rounded-md border border-red-200/20 bg-red-500/5 p-4 sm:col-span-2">
+          <div className="space-y-2 rounded-md border border-white/10 bg-zinc-900/70 p-4 sm:col-span-2">
             <p className="text-sm font-medium">Data rekening terdaftar</p>
             <p className="text-sm text-muted-foreground">{withdrawMethod} • {accountNumber}</p>
             <p className="text-sm text-muted-foreground">Atas nama {accountName}</p>
@@ -80,7 +81,7 @@ export default function WithdrawForm({
 
         <div className="flex flex-col gap-2">
           <p className="text-sm text-muted-foreground">Pastikan jumlah melebihi batas minimal withdraw dan tidak lebih dari saldo Anda.</p>
-          <Button type="submit" onClick={submit} disabled={loading}>
+          <Button type="submit" onClick={submit} disabled={loading} className="bg-teal-600 text-white hover:bg-teal-500">
             {loading ? "Mengirim..." : "Ajukan Withdraw"}
           </Button>
         </div>

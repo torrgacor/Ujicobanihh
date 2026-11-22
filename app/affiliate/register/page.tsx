@@ -77,9 +77,9 @@ export default function AffiliateRegisterPage() {
 
   if (isSuccess && registrationData) {
     return (
-      <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.3),_transparent_35%),linear-gradient(135deg,_#450a0a_0%,_#111827_100%)] px-4 py-10 text-white">
-        <div className="mx-auto flex max-w-md flex-col items-center rounded-3xl border border-red-400/20 bg-slate-950/70 p-8 shadow-2xl backdrop-blur-xl">
-          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-500">
+      <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.12),_transparent_35%),linear-gradient(135deg,_#050505_0%,_#111827_100%)] px-4 py-10 text-white">
+        <div className="mx-auto flex max-w-md flex-col items-center rounded-3xl border border-white/10 bg-zinc-950/80 p-8 shadow-2xl backdrop-blur-xl">
+          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500">
             <Check className="h-8 w-8 text-white" />
           </div>
           <CardHeader className="px-0 text-center">
@@ -97,16 +97,16 @@ export default function AffiliateRegisterPage() {
                 <p className="font-mono text-sm font-medium text-white">{registrationData.referralCode}</p>
               </div>
             </div>
-            <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4 text-sm text-red-100">
+            <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4 text-sm text-emerald-100">
               <div className="flex items-center gap-2 font-medium">
                 <BadgeCheck className="h-4 w-4" />
                 Email konfirmasi sedang dikirim ke {formData.email}
               </div>
             </div>
-            <Button onClick={() => router.push("/affiliate/login")} className="w-full bg-red-600 hover:bg-red-500">
+            <Button onClick={() => router.push("/affiliate/login")} className="w-full bg-teal-600 hover:bg-teal-500">
               Login Sekarang
             </Button>
-            <Button onClick={() => router.push("/affiliate")} className="w-full bg-red-600 hover:bg-red-500">
+            <Button onClick={() => router.push("/affiliate")} className="w-full bg-zinc-800 hover:bg-zinc-700">
               Kembali ke Beranda
             </Button>         
           </CardContent>
@@ -116,34 +116,34 @@ export default function AffiliateRegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.3),_transparent_45%),linear-gradient(135deg,_#450a0a_0%,_#111827_100%)] px-4 py-10 text-white">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(20,184,166,0.12),_transparent_45%),linear-gradient(135deg,_#050505_0%,_#111827_100%)] px-4 py-10 text-white">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 lg:flex-row lg:items-start">
-        <div className="max-w-xl space-y-6 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-red-400/40 bg-red-500/10 px-3 py-1 text-sm text-red-100">
+        <div className="max-w-xl space-y-6 rounded-3xl border border-white/10 bg-zinc-950/70 p-8 shadow-2xl backdrop-blur-xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-sm text-teal-200">
             <Sparkles className="h-4 w-4" />
             Dashboard Registrasi Affiliate
           </div>
           <div className="space-y-3">
             <h1 className="text-4xl font-semibold leading-tight">Daftar Sebagai Affiliate dan Raih Komisi Dari Setiap Penjualan</h1>
-            <p className="text-sm text-red-100/80 sm:text-base">
+            <p className="text-sm text-slate-300 sm:text-base">
               Bangun Jaringan Anda, Bagikan Referral Link, dan Pantau Hasilnya Dari Dashboard Yang Terintegrasi.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-red-300/20 bg-red-950/40 p-4">
-              <p className="text-sm text-red-200/80">Komisi Real Time</p>
+            <div className="rounded-2xl border border-teal-300/15 bg-zinc-900/80 p-4">
+              <p className="text-sm text-teal-200/80">Komisi Real Time</p>
               <p className="mt-1 font-semibold text-white">Pantau saldo dan transaksi secara langsung dan real time</p>
             </div>
-            <div className="rounded-2xl border border-red-300/20 bg-red-950/40 p-4">
-              <p className="text-sm text-red-200/80">Akses Cepat</p>
+            <div className="rounded-2xl border border-sky-300/15 bg-zinc-900/80 p-4">
+              <p className="text-sm text-sky-200/80">Akses Cepat</p>
               <p className="mt-1 font-semibold text-white">Panel khusus untuk mitra aktif</p>
             </div>
           </div>
         </div>
 
-        <Card className="w-full max-w-2xl border-red-400/20 bg-slate-950/80 shadow-2xl shadow-red-950/30 backdrop-blur-xl">
+        <Card className="w-full max-w-2xl border-white/10 bg-zinc-950/90 shadow-2xl shadow-black/50 backdrop-blur-xl">
           <div className="flex justify-end px-6 pt-4">
-            <Button variant="ghost" className="text-red-100/80 hover:bg-red-500/10 hover:text-white" onClick={() => router.push("/affiliate/login")}>
+            <Button variant="ghost" className="text-slate-300 hover:bg-teal-500/10 hover:text-white" onClick={() => router.push("/affiliate/login")}>
               Sudah punya akun? Login
             </Button>
           </div>
@@ -157,22 +157,22 @@ export default function AffiliateRegisterPage() {
                 <h3 className="font-semibold text-white">Informasi Toko</h3>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="storeName" className="text-red-100">Nama Toko</Label>
-                    <Input id="storeName" name="storeName" placeholder="Toko Bot Keren" value={formData.storeName} onChange={handleInputChange} disabled={isLoading} className="border-red-300/20 bg-slate-900/70 text-white placeholder:text-slate-500 focus-visible:ring-red-500" />
+                    <Label htmlFor="storeName" className="text-slate-200">Nama Toko</Label>
+                    <Input id="storeName" name="storeName" placeholder="Toko Bot Keren" value={formData.storeName} onChange={handleInputChange} disabled={isLoading} className="border-white/10 bg-zinc-900 text-white placeholder:text-slate-500 focus-visible:ring-teal-500" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="ownerName" className="text-red-100">Nama Pemilik</Label>
-                    <Input id="ownerName" name="ownerName" placeholder="John Doe" value={formData.ownerName} onChange={handleInputChange} disabled={isLoading} className="border-red-300/20 bg-slate-900/70 text-white placeholder:text-slate-500 focus-visible:ring-red-500" />
+                    <Label htmlFor="ownerName" className="text-slate-200">Nama Pemilik</Label>
+                    <Input id="ownerName" name="ownerName" placeholder="John Doe" value={formData.ownerName} onChange={handleInputChange} disabled={isLoading} className="border-white/10 bg-zinc-900 text-white placeholder:text-slate-500 focus-visible:ring-teal-500" />
                   </div>
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-red-100">Email (Data Login)</Label>
-                    <Input id="email" name="email" type="email" placeholder="affiliate@example.com" value={formData.email} onChange={handleInputChange} disabled={isLoading} className="border-red-300/20 bg-slate-900/70 text-white placeholder:text-slate-500 focus-visible:ring-red-500" />
+                    <Label htmlFor="email" className="text-slate-200">Email (Data Login)</Label>
+                    <Input id="email" name="email" type="email" placeholder="affiliate@example.com" value={formData.email} onChange={handleInputChange} disabled={isLoading} className="border-white/10 bg-zinc-900 text-white placeholder:text-slate-500 focus-visible:ring-teal-500" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phoneNumber" className="text-red-100">Nomor Telepon (Data Login)</Label>
-                    <Input id="phoneNumber" name="phoneNumber" placeholder="62812345678" value={formData.phoneNumber} onChange={handleInputChange} disabled={isLoading} className="border-red-300/20 bg-slate-900/70 text-white placeholder:text-slate-500 focus-visible:ring-red-500" />
+                    <Label htmlFor="phoneNumber" className="text-slate-200">Nomor Telepon (Data Login)</Label>
+                    <Input id="phoneNumber" name="phoneNumber" placeholder="62812345678" value={formData.phoneNumber} onChange={handleInputChange} disabled={isLoading} className="border-white/10 bg-zinc-900 text-white placeholder:text-slate-500 focus-visible:ring-teal-500" />
                   </div>
                 </div>
               </div>
@@ -180,12 +180,12 @@ export default function AffiliateRegisterPage() {
               <div className="space-y-4">
                 <h3 className="font-semibold text-white">Informasi Penarikan</h3>
                 <div className="space-y-2">
-                  <Label htmlFor="withdrawMethod" className="text-red-100">Metode Penarikan</Label>
+                  <Label htmlFor="withdrawMethod" className="text-slate-200">Metode Penarikan</Label>
                   <Select value={formData.withdrawMethod} onValueChange={handleSelectChange} disabled={isLoading}>
-                    <SelectTrigger className="border-red-300/20 bg-slate-900/70 text-white focus:ring-red-500">
+                    <SelectTrigger className="border-white/10 bg-zinc-900 text-white focus:ring-teal-500">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="border-white/10 bg-zinc-900 text-white">
                       <SelectItem value="transfer_bank">Transfer Bank</SelectItem>
                       <SelectItem value="e_wallet">E-Wallet (OVO/Dana/Gopay)</SelectItem>
                     </SelectContent>
@@ -193,24 +193,24 @@ export default function AffiliateRegisterPage() {
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="accountNumber" className="text-red-100">Nomor Rekening / No. HP</Label>
-                    <Input id="accountNumber" name="accountNumber" placeholder="123456789" value={formData.accountNumber} onChange={handleInputChange} disabled={isLoading} className="border-red-300/20 bg-slate-900/70 text-white placeholder:text-slate-500 focus-visible:ring-red-500" />
+                    <Label htmlFor="accountNumber" className="text-slate-200">Nomor Rekening / No. HP</Label>
+                    <Input id="accountNumber" name="accountNumber" placeholder="123456789" value={formData.accountNumber} onChange={handleInputChange} disabled={isLoading} className="border-white/10 bg-zinc-900 text-white placeholder:text-slate-500 focus-visible:ring-teal-500" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="accountName" className="text-red-100">Nama Rekening / Nama Penerima</Label>
-                    <Input id="accountName" name="accountName" placeholder="John Doe" value={formData.accountName} onChange={handleInputChange} disabled={isLoading} className="border-red-300/20 bg-slate-900/70 text-white placeholder:text-slate-500 focus-visible:ring-red-500" />
+                    <Label htmlFor="accountName" className="text-slate-200">Nama Rekening / Nama Penerima</Label>
+                    <Input id="accountName" name="accountName" placeholder="John Doe" value={formData.accountName} onChange={handleInputChange} disabled={isLoading} className="border-white/10 bg-zinc-900 text-white placeholder:text-slate-500 focus-visible:ring-teal-500" />
                   </div>
-                  <p className="mt-1 text-xs text-red-300">
+                  <p className="mt-1 text-xs text-amber-300">
   ⚠️ Pastikan nomor dan nama rekening sudah benar dan sesuai dengan data pemilik rekening. Kesalahan pengisian dapat menyebabkan kendala pada proses penarikan.
                  </p>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4 text-sm text-red-100">
+              <div className="rounded-2xl border border-amber-400/20 bg-amber-500/10 p-4 text-sm text-amber-100">
                 Setelah mendaftar, akun Anda akan berstatus <strong>Pending</strong> dan menunggu approval admin. Anda akan menerima email konfirmasi setelah disetujui.
               </div>
 
-              <Button type="submit" disabled={isLoading} className="w-full bg-red-600 hover:bg-red-500 h-11 text-white">
+              <Button type="submit" disabled={isLoading} className="h-11 w-full bg-teal-600 text-white hover:bg-teal-500">
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
