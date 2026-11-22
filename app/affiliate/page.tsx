@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { ArrowRight, BadgeCheck, CreditCard, Gift, ShieldCheck, TrendingUp, Wallet, Zap, Sparkles } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge" 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
