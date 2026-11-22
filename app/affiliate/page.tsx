@@ -270,7 +270,7 @@ export default async function AffiliateLandingPage() {
                       {affiliateStats.map((a, idx) => (
                         <TableRow key={`${a.storeName}-${idx}`} className="border-white/10 hover:bg-slate-900/50">
                           <TableCell>
-                            <span className="inline-block rounded-lg bg-gradient-to-r from-white-300 to-red-700 px-3 py-1 font-bold text-white">
+                            <span className="inline-block rounded-lg bg-gradient-to-r from-black-500 to-red-500 px-3 py-1 font-bold text-white">
                               #{idx + 1}
                             </span>
                           </TableCell>
