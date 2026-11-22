@@ -103,9 +103,10 @@ export default async function AffiliateLandingPage() {
       <section className="border-b border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-20 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div className="max-w-2xl space-y-6">
-            <Badge variant="secondary" className="bg-red-500/15 text-red-300 hover:bg-red-500/20">
-              Program Affiliate Resmi
-            </Badge>
+            <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sm text-sky-100">
+            <Sparkles className="h-4 w-4" />
+            Program Affiliate TokoPanel
+          </div>
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
                 Raih Penghasilan Tambahan Dari Setiap Referral Yang Berhasil.
