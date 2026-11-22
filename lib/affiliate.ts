@@ -9,6 +9,11 @@ export interface AffiliateProfile {
   storeName: string
   email?: string
   ownerName?: string
+  phoneNumber?: string
+  withdrawMethod?: string
+  accountNumber?: string
+  accountName?: string
+  referralCode?: string
   status: "active" | "suspended" | "pending"
   wallet: {
     balance: number

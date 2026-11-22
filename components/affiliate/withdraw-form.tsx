@@ -6,13 +6,16 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 
-const PAYMENT_METHODS = ["DANA", "OVO", "GoPay", "ShopeePay", "LinkAja", "Bank BCA", "Bank Mandiri", "Bank BRI", "Bank Jago", "Lainnya"]
-
-export default function WithdrawForm({ affiliateId }: { affiliateId: string }) {
+export default function WithdrawForm({
+  withdrawMethod,
+  accountNumber,
+  accountName,
+}: {
+  withdrawMethod: string
+  accountNumber: string
+  accountName: string
+}) {
   const [amount, setAmount] = useState(0)
-  const [method, setMethod] = useState("")
-  const [accountNumber, setAccountNumber] = useState("")
-  const [accountName, setAccountName] = useState("")
   const [loading, setLoading] = useState(false)
   const { toast } = useToast()
 
@@ -22,8 +25,8 @@ export default function WithdrawForm({ affiliateId }: { affiliateId: string }) {
       toast({ title: "Jumlah tidak valid", description: "Masukkan jumlah penarikan yang benar", variant: "destructive" })
       return
     }
-    if (!method || !accountNumber || !accountName) {
-      toast({ title: "Data belum lengkap", description: "Lengkapi semua field sebelum mengirim", variant: "destructive" })
+    if (!withdrawMethod || !accountNumber || !accountName) {
+      toast({ title: "Data rekening belum lengkap", description: "Hubungi admin untuk memperbarui data rekening withdraw Anda", variant: "destructive" })
       return
     }
 
@@ -33,15 +36,12 @@ export default function WithdrawForm({ affiliateId }: { affiliateId: string }) {
       const res = await fetch(`/api/affiliate/withdraw`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ affiliateId, amount, method, accountNumber, accountName }),
+        body: JSON.stringify({ amount }),
       })
       const data = await res.json()
       if (data.success) {
         toast({ title: "Berhasil dikirim", description: "Pengajuan withdraw berhasil dibuat", variant: "default" })
         setAmount(0)
-        setMethod("")
-        setAccountNumber("")
-        setAccountName("")
       } else {
         toast({ title: "Gagal mengajukan", description: data.error || "Silakan coba lagi", variant: "destructive" })
       }
@@ -56,7 +56,7 @@ export default function WithdrawForm({ affiliateId }: { affiliateId: string }) {
     <Card className="space-y-4">
       <CardHeader>
         <CardTitle>Ajukan Withdraw</CardTitle>
-        <CardDescription>Pengajuan ditangani manual oleh admin. Pastikan data rekening benar.</CardDescription>
+        <CardDescription>Withdraw akan dikirim ke rekening yang Anda daftarkan. Hubungi admin jika ingin memperbarui data rekening.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-2">
@@ -71,42 +71,10 @@ export default function WithdrawForm({ affiliateId }: { affiliateId: string }) {
               placeholder="50000"
             />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="withdraw-method">Metode Pembayaran</Label>
-            <select
-              id="withdraw-method"
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              value={method}
-              onChange={(e) => setMethod(e.target.value)}
-            >
-              <option value="">Pilih Metode</option>
-              {PAYMENT_METHODS.map((methodOption) => (
-                <option key={methodOption} value={methodOption}>
-                  {methodOption}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-2">
-            <Label htmlFor="withdraw-account">Nomor Rekening / E-Wallet</Label>
-            <Input
-              id="withdraw-account"
-              value={accountNumber}
-              onChange={(e) => setAccountNumber(e.target.value)}
-              placeholder="Contoh: 081234567890"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="withdraw-owner">Nama Rekening</Label>
-            <Input
-              id="withdraw-owner"
-              value={accountName}
-              onChange={(e) => setAccountName(e.target.value)}
-              placeholder="Nama terdaftar"
-            />
+          <div className="space-y-2 rounded-md border border-red-200/20 bg-red-500/5 p-4 sm:col-span-2">
+            <p className="text-sm font-medium">Data rekening terdaftar</p>
+            <p className="text-sm text-muted-foreground">{withdrawMethod} • {accountNumber}</p>
+            <p className="text-sm text-muted-foreground">Atas nama {accountName}</p>
           </div>
         </div>
 

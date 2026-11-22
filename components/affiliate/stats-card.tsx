@@ -60,7 +60,7 @@ export default function AffiliateStatsCard({
   return (
     <>
       {/* Referral Link Section */}
-      <Card className="border border-border bg-card col-span-full">
+      <Card className="col-span-full border border-red-400/20 bg-red-950/50">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <ExternalLink className="w-5 h-5" />
@@ -78,7 +78,7 @@ export default function AffiliateStatsCard({
             <Button
               onClick={handleCopyLink}
               variant={copied ? "default" : "outline"}
-              className="shrink-0 bg-blue-600 hover:bg-blue-700 text-white"
+              className="shrink-0 bg-red-600 text-white hover:bg-red-700"
             >
               <Copy className="w-4 h-4 mr-2" />
               {copied ? "Disalin!" : "Salin"}
@@ -91,10 +91,10 @@ export default function AffiliateStatsCard({
       </Card>
 
       {/* Referral Stats */}
-      <Card className="border border-border bg-card">
+      <Card className="border border-red-400/20 bg-red-950/50">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Crown className="w-5 h-5 text-amber-500" />
+            <Crown className="w-5 h-5 text-red-400" />
             Level Reseller
           </CardTitle>
           <CardDescription>Level & Persentase Komisi Aktif Anda</CardDescription>
@@ -105,7 +105,7 @@ export default function AffiliateStatsCard({
         </CardContent>
       </Card>
 
-      <Card className="border border-border bg-card">
+      <Card className="border border-red-400/20 bg-red-950/50">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Users className="w-5 h-5 text-red-500" />
@@ -119,10 +119,10 @@ export default function AffiliateStatsCard({
         </CardContent>
       </Card>
 
-      <Card className="border border-border bg-card">
+      <Card className="border border-red-400/20 bg-red-950/50">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-green-500" />
+            <TrendingUp className="w-5 h-5 text-red-500" />
             Total Transaksi
           </CardTitle>
           <CardDescription>Jumlah Customer Yang Order Di Link Anda</CardDescription>
@@ -135,10 +135,10 @@ export default function AffiliateStatsCard({
         </CardContent>
       </Card>
 
-      <Card className="border border-border bg-card">
+      <Card className="border border-red-400/20 bg-red-950/50">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Wallet className="w-5 h-5 text-green-500" />
+            <Wallet className="w-5 h-5 text-red-500" />
             Total Komisi
           </CardTitle>
           <CardDescription>Total Komisi Dari Link Referral Anda</CardDescription>
@@ -155,10 +155,10 @@ export default function AffiliateStatsCard({
         </CardContent>
       </Card>
 
-      <Card className="border border-border bg-card">
+      <Card className="border border-red-400/20 bg-red-950/50">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-yellow-500" />
+            <BarChart3 className="w-5 h-5 text-red-400" />
             Rata-Rata Komisi
           </CardTitle>
           <CardDescription>Nilai Dari Rata-Rata Tiap Transaksi</CardDescription>

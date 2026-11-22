@@ -181,13 +181,26 @@ export async function getAffiliateStats(affiliateId: string) {
 /**
  * Dapatkan semua affiliate (untuk admin)
  */
-export async function getAllAffiliates(page: number = 1, limit: number = 10, filter?: { status?: string }) {
+export async function getAllAffiliates(page: number = 1, limit: number = 10, filter?: { status?: string; search?: string }) {
   try {
     const { affiliateProfiles, affiliateTransactions } = await getCollections()
 
     const query: any = {}
     if (filter?.status) {
       query.status = filter.status
+    }
+    const search = filter?.search?.trim()
+    if (search) {
+      const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+      const searchRegex = new RegExp(escapedSearch, "i")
+      query.$or = [
+        { storeName: searchRegex },
+        { email: searchRegex },
+        { ownerName: searchRegex },
+        { phoneNumber: searchRegex },
+        { userId: searchRegex },
+        { referralCode: searchRegex },
+      ]
     }
 
     const total = await affiliateProfiles.countDocuments(query)

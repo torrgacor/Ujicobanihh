@@ -99,15 +99,9 @@ export async function processAffiliatePurchase({
 export async function createWithdrawalRequest({
   affiliateId,
   amount,
-  method,
-  accountNumber,
-  accountName,
 }: {
   affiliateId: string
   amount: number
-  method: string
-  accountNumber: string
-  accountName: string
 }) {
   const MIN_WITHDRAW = await getAffiliateMinWithdraw()
   if (amount < MIN_WITHDRAW) {
@@ -120,16 +114,25 @@ export async function createWithdrawalRequest({
     const { affiliateProfiles, withdrawalRequests, affiliateTransactions } = await getCollections()
     let result: any = null
     let createdProfile: any = null
+    let method = ""
+    let accountNumber = ""
+    let accountName = ""
 
     await session.withTransaction(async () => {
       const profile = await affiliateProfiles.findOne({ userId: affiliateId }, { session })
       if (!profile) throw new Error("Affiliate tidak ditemukan")
+      if (!profile.withdrawMethod || !profile.accountNumber || !profile.accountName) {
+        throw new Error("Data rekening belum lengkap. Hubungi admin untuk memperbarui data rekening.")
+      }
 
       if ((profile.wallet?.balance || 0) < amount) {
         throw new Error("Saldo tidak mencukupi untuk penarikan")
       }
 
       createdProfile = profile
+      method = profile.withdrawMethod
+      accountNumber = profile.accountNumber
+      accountName = profile.accountName
 
       // Potong saldo aktif dan tambahkan ke pending (locked)
       await affiliateProfiles.updateOne(
@@ -147,7 +150,7 @@ export async function createWithdrawalRequest({
         method,
         accountNumber,
         accountName,
-        status: "pending",
+        status: "pending" as const,
         createdAt: new Date(),
       }
 

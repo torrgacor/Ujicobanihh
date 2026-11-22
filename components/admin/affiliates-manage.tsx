@@ -87,6 +87,7 @@ export default function AffiliatesManage() {
   const [isLoading, setIsLoading] = useState(false)
   const [filterStatus, setFilterStatus] = useState("all")
   const [searchTerm, setSearchTerm] = useState("")
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("")
   const [page, setPage] = useState(1)
   const [pagination, setPagination] = useState({ total: 0, page: 1, limit: 10, totalPages: 1 })
   const [statusSummary, setStatusSummary] = useState({ total: 0, active: 0, pending: 0, suspended: 0, rejected: 0 })
@@ -109,18 +110,24 @@ export default function AffiliatesManage() {
   const { toast } = useToast()
 
   useEffect(() => {
+    const timeout = setTimeout(() => setDebouncedSearchTerm(searchTerm), 300)
+    return () => clearTimeout(timeout)
+  }, [searchTerm])
+
+  useEffect(() => {
     setPage(1)
-  }, [filterStatus, searchTerm])
+  }, [filterStatus, debouncedSearchTerm])
 
   useEffect(() => {
     loadAffiliates()
-  }, [filterStatus, searchTerm, page])
+  }, [filterStatus, debouncedSearchTerm, page])
 
   const loadAffiliates = async () => {
     setIsLoading(true)
     try {
       const result = await getAllAffiliates(page, 10, {
         status: filterStatus === "all" ? undefined : filterStatus,
+        search: debouncedSearchTerm,
       })
 
       if (result.success) {
@@ -132,15 +139,6 @@ export default function AffiliatesManage() {
       setIsLoading(false)
     }
   }
-
-  const dataTampil = affiliates.filter((r) => {
-    if (!searchTerm.trim()) return true
-    const kata = searchTerm.toLowerCase()
-    return (
-      r.storeName?.toLowerCase().includes(kata) ||
-      r.email?.toLowerCase().includes(kata)
-    )
-  })
 
   const handleApprove = async () => {
     if (!selectedAffiliate) return
@@ -402,7 +400,7 @@ export default function AffiliatesManage() {
         </CardHeader>
         <CardContent className="flex flex-col md:flex-row gap-4">
           <Input
-            placeholder="Cari nama toko atau email..."
+            placeholder="Cari nama toko, pemilik, email, telepon, User ID, atau kode referral..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="flex-1"
@@ -489,7 +487,7 @@ export default function AffiliatesManage() {
             <div className="flex items-center justify-center py-12">
               <Loader2 className="w-6 h-6 animate-spin" />
             </div>
-          ) : dataTampil.length === 0 ? (
+          ) : affiliates.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">Tidak ada affiliate</p>
             </div>
@@ -510,7 +508,7 @@ export default function AffiliatesManage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {dataTampil.map((affiliate) => (
+                  {affiliates.map((affiliate) => (
                     <TableRow key={affiliate.userId}>
                       <TableCell className="font-medium">{affiliate.storeName}</TableCell>
                       <TableCell className="text-sm">{affiliate.email}</TableCell>

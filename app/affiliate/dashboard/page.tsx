@@ -45,13 +45,15 @@ export default async function AffiliateDashboardPage() {
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     .slice(0, 8)
 
+  const payoutMethod = affiliate.withdrawMethod === "e_wallet" ? "E-Wallet" : "Transfer Bank"
+
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.16),_transparent_35%),linear-gradient(135deg,_#07111f_0%,_#111827_100%)] px-4 py-6 text-slate-50 md:px-8 md:py-10">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.25),_transparent_35%),linear-gradient(135deg,_#450a0a_0%,_#111827_100%)] px-4 py-6 text-slate-50 md:px-8 md:py-10">
       <div className="mx-auto max-w-7xl space-y-8">
-        <Card className="overflow-hidden border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-xl">
+        <Card className="overflow-hidden border border-red-400/20 bg-red-950/60 shadow-2xl shadow-red-950/30 backdrop-blur-xl">
           <CardContent className="grid gap-8 p-6 md:grid-cols-[1.3fr_0.7fr] md:p-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3 py-1 text-sm text-sky-200">
+              <div className="inline-flex items-center gap-2 rounded-full border border-red-400/30 bg-red-500/10 px-3 py-1 text-sm text-red-200">
                 <Sparkles className="h-4 w-4" />
                 Dashboard Affiliate Premium
               </div>
@@ -62,21 +64,21 @@ export default async function AffiliateDashboardPage() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
-                <Button asChild className="bg-sky-600 hover:bg-sky-500">
+                <Button asChild className="bg-red-600 hover:bg-red-500">
                   <Link href="/affiliate/transactions">
                     Riwayat Transaksi
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="border-white/10 bg-white/10 text-white hover:bg-white/20">
+                <Button asChild variant="outline" className="border-red-300/20 bg-red-900/30 text-white hover:bg-red-800/40">
                   <Link href="/affiliate">Ke Beranda</Link>
                 </Button>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/10 p-5">
+            <div className="rounded-2xl border border-red-300/20 bg-red-900/30 p-5">
               <div className="flex items-center gap-3">
-                <div className="rounded-2xl bg-emerald-500/15 p-3 text-emerald-300">
+                <div className="rounded-2xl bg-red-500/15 p-3 text-red-300">
                   <Wallet className="h-6 w-6" />
                 </div>
                 <div>
@@ -85,11 +87,11 @@ export default async function AffiliateDashboardPage() {
                 </div>
               </div>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-xl bg-slate-900/70 p-3">
+                <div className="rounded-xl bg-red-950/50 p-3">
                   <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Transaksi</p>
                   <p className="mt-1 text-lg font-semibold">{affiliate?.referralStats?.conversions ?? 0}</p>
                 </div>
-                <div className="rounded-xl bg-slate-900/70 p-3">
+                <div className="rounded-xl bg-red-950/50 p-3">
                   <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Pengunjung</p>
                   <p className="mt-1 text-lg font-semibold">{affiliate?.referralStats?.clicks ?? 0}</p>
                 </div>
@@ -99,10 +101,10 @@ export default async function AffiliateDashboardPage() {
         </Card>
 
         <div className="grid gap-6 lg:grid-cols-3">
-          <Card className="border border-white/10 bg-slate-950/70 shadow-lg backdrop-blur-xl">
+          <Card className="border border-red-400/20 bg-red-950/50 shadow-lg backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Wallet2 className="h-5 w-5 text-sky-400" />
+                <Wallet2 className="h-5 w-5 text-red-400" />
                 Saldo Aktif
               </CardTitle>
               <CardDescription className="text-slate-400">Saldo yang tersedia untuk withdraw</CardDescription>
@@ -112,10 +114,10 @@ export default async function AffiliateDashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="border border-white/10 bg-slate-950/70 shadow-lg backdrop-blur-xl">
+          <Card className="border border-red-400/20 bg-red-950/50 shadow-lg backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <BadgeCheck className="h-5 w-5 text-amber-400" />
+                <BadgeCheck className="h-5 w-5 text-red-400" />
                 Saldo Tertahan
               </CardTitle>
               <CardDescription className="text-slate-400">Jumlah yang masih menunggu proses</CardDescription>
@@ -126,7 +128,7 @@ export default async function AffiliateDashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="border border-white/10 bg-slate-950/70 shadow-lg backdrop-blur-xl">
+          <Card className="border border-red-400/20 bg-red-950/50 shadow-lg backdrop-blur-xl">
             <CardHeader>
               <CardTitle>Status Akun</CardTitle>
               <CardDescription className="text-slate-400">Informasi status akun Anda</CardDescription>
@@ -135,17 +137,17 @@ export default async function AffiliateDashboardPage() {
               <div className="flex items-center gap-2">
                 <div
                   className={`h-3 w-3 rounded-full ${
-                    affiliate?.status === "active" ? "bg-emerald-500" : affiliate?.status === "suspended" ? "bg-rose-500" : "bg-amber-500"
+                    affiliate?.status === "active" ? "bg-red-500" : affiliate?.status === "suspended" ? "bg-red-700" : "bg-red-400"
                   }`}
                 />
                 <span className="text-lg font-medium capitalize">{affiliate?.status ?? "pending"}</span>
               </div>
-              {affiliate?.status === "pending" && <p className="mt-2 text-sm text-amber-400">⏳ Menunggu approval admin</p>}
+              {affiliate?.status === "pending" && <p className="mt-2 text-sm text-red-300">⏳ Menunggu approval admin</p>}
             </CardContent>
           </Card>
         </div>
 
-        <Card className="border border-white/10 bg-slate-950/70 shadow-lg backdrop-blur-xl">
+        <Card className="border border-red-400/20 bg-red-950/50 shadow-lg backdrop-blur-xl">
           <CardHeader>
             <CardTitle>Level Affiliate</CardTitle>
             <CardDescription className="text-slate-400">Progress transaksi referral Anda menuju level berikutnya</CardDescription>
@@ -157,7 +159,7 @@ export default async function AffiliateDashboardPage() {
                   <p className="text-lg font-semibold">{levelProgress?.currentLevel?.name ?? "Bronze"}</p>
                   <p className="text-sm text-slate-400">{levelProgress?.message ?? "Belum ada transaksi referral"}</p>
                 </div>
-                <span className="shrink-0 rounded-full bg-sky-600/10 px-3 py-1 text-sm font-semibold text-sky-300">
+                <span className="shrink-0 rounded-full bg-red-600/10 px-3 py-1 text-sm font-semibold text-red-300">
                   Komisi {levelProgress?.activeCommissionPercent ?? 0}%
                 </span>
               </div>
@@ -176,11 +178,11 @@ export default async function AffiliateDashboardPage() {
                 </div>
               </div>
             ) : (
-              <p className="text-sm text-emerald-400">Level maksimal tercapai.</p>
+              <p className="text-sm text-red-300">Level maksimal tercapai.</p>
             )}
 
             {levelProgress?.levels?.length ? (
-              <div className="flex flex-wrap gap-2 border-t border-white/10 pt-4">
+              <div className="flex flex-wrap gap-2 border-t border-red-300/15 pt-4">
                 {levelProgress.levels.map((lvl) => {
                   const isCurrent = lvl.name === levelProgress?.currentLevel?.name
                   return (
@@ -188,8 +190,8 @@ export default async function AffiliateDashboardPage() {
                       key={lvl.name}
                       className={`rounded-lg border px-3 py-1.5 text-xs ${
                         isCurrent
-                          ? "border-sky-400 bg-sky-400/10 font-semibold text-sky-300"
-                          : "border-white/10 text-slate-400"
+                          ? "border-red-400 bg-red-400/10 font-semibold text-red-300"
+                          : "border-red-300/15 text-slate-400"
                       }`}
                     >
                       {lvl.name} • {lvl.threshold} trx • {lvl.commissionPercent}%
@@ -204,7 +206,12 @@ export default async function AffiliateDashboardPage() {
         <div className="grid gap-6 lg:grid-cols-5">
           <AffiliateStatsCard
             referralCode={affiliate?.referralCode || ""}
-            stats={affiliate?.referralStats || { clicks: 0, conversions: 0, successfulTransactions: 0, totalCommission: 0 }}
+            stats={{
+              clicks: affiliate?.referralStats?.clicks ?? 0,
+              conversions: affiliate?.referralStats?.conversions ?? 0,
+              successfulTransactions: affiliate?.referralStats?.successfulTransactions ?? 0,
+              totalCommission: affiliate?.referralStats?.totalCommission ?? 0,
+            }}
             level={{
               name: levelProgress?.currentLevel?.name ?? "Bronze",
               commissionPercent: levelProgress?.activeCommissionPercent ?? 0,
@@ -213,14 +220,18 @@ export default async function AffiliateDashboardPage() {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-1">
-          <WithdrawForm affiliateId={affiliateId} />
+          <WithdrawForm
+            withdrawMethod={payoutMethod}
+            accountNumber={affiliate.accountNumber || ""}
+            accountName={affiliate.accountName || ""}
+          />
         </div>
 
-        <Card className="border border-white/10 bg-slate-950/70 shadow-lg backdrop-blur-xl">
+        <Card className="border border-red-400/20 bg-red-950/50 shadow-lg backdrop-blur-xl">
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               <span>Riwayat Transaksi</span>
-              <Button asChild variant="outline" size="sm" className="border-white/10 bg-white/10 text-white hover:bg-white/20">
+              <Button asChild variant="outline" size="sm" className="border-red-300/20 bg-red-900/30 text-white hover:bg-red-800/40">
                 <Link href="/affiliate/transactions">
                   Lihat Semua <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -252,17 +263,17 @@ export default async function AffiliateDashboardPage() {
                     ? "Komisi Penjualan"
                     : "Penyesuaian Saldo"
                   const amountPrefix = isWithdraw ? "-" : "+"
-                  const amountClass = isWithdraw ? "text-rose-400" : "text-emerald-400"
+                  const amountClass = isWithdraw ? "text-red-300" : "text-red-400"
 
                   return (
-                    <div key={tx._id ?? tx.transactionId} className="rounded-xl border border-white/10 bg-slate-900/70 p-4">
+                    <div key={tx._id ?? tx.transactionId} className="rounded-xl border border-red-300/15 bg-red-950/40 p-4">
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                           <div className="flex flex-wrap items-center gap-2">
                             <p className="font-medium">{label}</p>
-                            {tx.type === "referral" && <span className="rounded bg-sky-600/20 px-2 py-1 text-xs text-sky-300">Referral</span>}
-                            {isWithdraw && tx.status === "approved" && <span className="rounded bg-emerald-600/20 px-2 py-1 text-xs text-emerald-300">Approved</span>}
-                            {isWithdraw && tx.status === "rejected" && <span className="rounded bg-amber-600/20 px-2 py-1 text-xs text-amber-300">Rejected</span>}
+                            {tx.type === "referral" && <span className="rounded bg-red-600/20 px-2 py-1 text-xs text-red-300">Referral</span>}
+                            {isWithdraw && tx.status === "approved" && <span className="rounded bg-red-600/20 px-2 py-1 text-xs text-red-300">Approved</span>}
+                            {isWithdraw && tx.status === "rejected" && <span className="rounded bg-red-900/40 px-2 py-1 text-xs text-red-200">Rejected</span>}
                           </div>
                           <p className="text-sm text-slate-400">{new Date(tx.createdAt).toLocaleString("id-ID")}</p>
                           {tx.planId ? <p className="text-sm text-slate-400">Paket: {tx.planId}</p> : null}
@@ -281,11 +292,11 @@ export default async function AffiliateDashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border border-sky-500/20 bg-sky-500/10 shadow-lg backdrop-blur-xl">
+        <Card className="border border-red-500/20 bg-red-500/10 shadow-lg backdrop-blur-xl">
           <CardContent className="pt-6">
             <div className="space-y-2">
-              <h3 className="font-semibold text-sky-100">💡 Tips Tingkatkan Komisi</h3>
-              <ul className="space-y-1 text-sm text-sky-100/80">
+              <h3 className="font-semibold text-red-100">💡 Tips Tingkatkan Komisi</h3>
+              <ul className="space-y-1 text-sm text-red-100/80">
                 <li>✓ Bagikan link referral ke grup WhatsApp, Telegram, atau media sosial Anda</li>
                 <li>✓ Buat content yang menarik tentang produk kami</li>
                 <li>✓ Sesuaikan harga markup Anda untuk kompetitif namun tetap menguntungkan</li>
