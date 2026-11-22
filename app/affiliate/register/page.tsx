@@ -78,8 +78,8 @@ export default function AffiliateRegisterPage() {
   if (isSuccess && registrationData) {
     return (
       <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.16),_transparent_35%),linear-gradient(135deg,_#07111f_0%,_#111827_100%)] px-4 py-10 text-white">
-        <div className="mx-auto flex max-w-md flex-col items-center rounded-3xl border border-emerald-400/20 bg-slate-950/70 p-8 shadow-2xl backdrop-blur-xl">
-          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500">
+        <div className="mx-auto flex max-w-md flex-col items-center rounded-3xl border border-red-400/20 bg-slate-950/70 p-8 shadow-2xl backdrop-blur-xl">
+          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-500">
             <Check className="h-8 w-8 text-white" />
           </div>
           <CardHeader className="px-0 text-center">
@@ -97,16 +97,16 @@ export default function AffiliateRegisterPage() {
                 <p className="font-mono text-sm font-medium text-white">{registrationData.referralCode}</p>
               </div>
             </div>
-            <div className="rounded-2xl border border-sky-400/20 bg-sky-500/10 p-4 text-sm text-sky-100">
+            <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4 text-sm text-red-100">
               <div className="flex items-center gap-2 font-medium">
                 <BadgeCheck className="h-4 w-4" />
                 Email konfirmasi sedang dikirim ke {formData.email}
               </div>
             </div>
-            <Button onClick={() => router.push("/affiliate/login")} className="w-full bg-emerald-600 hover:bg-emerald-500">
+            <Button onClick={() => router.push("/affiliate/login")} className="w-full bg-red-600 hover:bg-red-500">
               Login Sekarang
             </Button>
-            <Button onClick={() => router.push("/affiliate")} className="w-full bg-sky-600 hover:bg-sky-500">
+            <Button onClick={() => router.push("/affiliate")} className="w-full bg-red-600 hover:bg-red-500">
               Kembali ke Beranda
             </Button>         
           </CardContent>
@@ -119,9 +119,9 @@ export default function AffiliateRegisterPage() {
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.2),_transparent_45%),linear-gradient(135deg,_#07111f_0%,_#111827_100%)] px-4 py-10 text-white">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 lg:flex-row lg:items-start">
         <div className="max-w-xl space-y-6 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-sm text-emerald-100">
+          <div className="inline-flex items-center gap-2 rounded-full border border-red-400/40 bg-red-500/10 px-3 py-1 text-sm text-red-100">
             <Sparkles className="h-4 w-4" />
-            Program Affiliate Baru
+            Program Affiliate TokoPanel
           </div>
           <div className="space-y-3">
             <h1 className="text-4xl font-semibold leading-tight">Daftar sebagai affiliate dan raih komisi dari setiap penjualan</h1>
@@ -131,11 +131,11 @@ export default function AffiliateRegisterPage() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
-              <p className="text-sm text-slate-400">Komisi real-time</p>
-              <p className="mt-1 font-semibold text-white">Pantau saldo dan transaksi langsung</p>
+              <p className="text-sm text-slate-400">Komisi Real Time</p>
+              <p className="mt-1 font-semibold text-white">Pantau saldo dan transaksi secara langsung dan real time</p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
-              <p className="text-sm text-slate-400">Akses cepat</p>
+              <p className="text-sm text-slate-400">Akses Cepat</p>
               <p className="mt-1 font-semibold text-white">Panel khusus untuk mitra aktif</p>
             </div>
           </div>
@@ -200,14 +200,18 @@ export default function AffiliateRegisterPage() {
                     <Label htmlFor="accountName" className="text-slate-200">Nama Rekening / Nama Penerima</Label>
                     <Input id="accountName" name="accountName" placeholder="John Doe" value={formData.accountName} onChange={handleInputChange} disabled={isLoading} className="border-white/10 bg-slate-900/70 text-white placeholder:text-slate-500" />
                   </div>
+                  <p className="text-xs text-yellow-400 mt-1">
+  ⚠️ Pastikan nomor dan nama rekening sudah benar dan sesuai dengan data pemilik rekening. Kesalahan pengisian dapat menyebabkan kendala pada proses penarikan.
+                 </p>
+                 </div>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-sky-400/20 bg-sky-500/10 p-4 text-sm text-sky-100">
+              <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4 text-sm text-red-100">
                 Setelah mendaftar, akun Anda akan berstatus <strong>Pending</strong> dan menunggu approval admin. Anda akan menerima email konfirmasi setelah disetujui.
               </div>
 
-              <Button type="submit" disabled={isLoading} className="w-full bg-sky-600 hover:bg-sky-500 h-11 text-white">
+              <Button type="submit" disabled={isLoading} className="w-full bg-red-600 hover:bg-red-500 h-11 text-white">
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
