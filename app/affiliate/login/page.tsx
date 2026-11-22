@@ -44,7 +44,7 @@ export default function AffiliateLoginPage() {
         <div className="max-w-xl space-y-6 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sm text-sky-200">
             <Sparkles className="h-4 w-4" />
-            Panel Affiliate Premium
+            Dashboard Login Affiliate
           </div>
           <div className="space-y-3">
             <h1 className="text-4xl font-semibold leading-tight">Masuk ke akun affiliate Anda</h1>
