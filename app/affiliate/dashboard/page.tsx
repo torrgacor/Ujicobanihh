@@ -1,4 +1,4 @@
-import { getCollections, getAffiliateLevelProgress } from "@/lib/affiliate"
+import { getCollections, getAffiliateLevelProgress, getAffiliateMinWithdraw } from "@/lib/affiliate"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -9,6 +9,7 @@ import AffiliateStatsCard from "@/components/affiliate/stats-card"
 import Link from "next/link"
 import { ArrowRight, BadgeCheck, CircleDollarSign, Sparkles, Wallet2, Wallet } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
+import AffiliateNav from "@/components/affiliate/affiliate-nav"
 
 export const dynamic = "force-dynamic"
 
@@ -34,6 +35,7 @@ export default async function AffiliateDashboardPage() {
   const withdrawals = await withdrawalRequests.find({ affiliateId }).sort({ createdAt: -1 }).toArray()
 
   const levelProgress = await getAffiliateLevelProgress(affiliateId).catch(() => null)
+  const minWithdraw = await getAffiliateMinWithdraw()
 
   const transactions = [...commissions.map((tx) => ({
     ...tx,
@@ -51,6 +53,7 @@ export default async function AffiliateDashboardPage() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(20,184,166,0.1),_transparent_35%),linear-gradient(135deg,_#050505_0%,_#111827_100%)] px-4 py-6 text-slate-50 md:px-8 md:py-10">
       <div className="mx-auto max-w-7xl space-y-8">
+        <AffiliateNav />
         <Card className="overflow-hidden border border-white/10 bg-zinc-950/85 shadow-2xl shadow-black/50 backdrop-blur-xl">
           <CardContent className="grid gap-8 p-6 md:grid-cols-[1.3fr_0.7fr] md:p-8">
             <div className="space-y-4">
@@ -224,6 +227,8 @@ export default async function AffiliateDashboardPage() {
             withdrawMethod={payoutMethod}
             accountNumber={affiliate.accountNumber || ""}
             accountName={affiliate.accountName || ""}
+            balance={affiliate.wallet?.balance ?? 0}
+            minWithdraw={minWithdraw}
           />
         </div>
 

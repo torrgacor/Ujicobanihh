@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { formatRupiah, formatDate } from "@/lib/utils"
 import Link from "next/link"
 import { TrendingUp, Wallet, History, Filter } from "lucide-react"
+import AffiliateNav from "@/components/affiliate/affiliate-nav"
 
 export const dynamic = "force-dynamic"
 
@@ -112,6 +113,7 @@ export default async function AffiliateTransactionsPage({ searchParams }: { sear
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <div className="space-y-8 p-6 md:p-10">
+        <AffiliateNav />
         <div>
           <div className="flex items-center gap-3 mb-2">
             <div className="p-2 bg-emerald-500/20 rounded-lg">
