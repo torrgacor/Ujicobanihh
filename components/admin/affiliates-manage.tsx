@@ -42,10 +42,7 @@ import {
 } from "@/components/ui/table"
 import { useToast } from "@/hooks/use-toast"
 import { formatRupiah, formatDate } from "@/lib/utils"
-import {
-  approveAffiliate,
-  rejectAffiliate,
-} from "@/app/actions/affiliate-registration"
+import { rejectAffiliate } from "@/app/actions/affiliate-registration"
 import {
   adjustAffiliateBalance,
   toggleAffiliateStatus,
@@ -55,7 +52,6 @@ import {
 } from "@/app/actions/referral-tracking"
 import {
   Loader2,
-  Check,
   X,
   Pencil,
   Trash2,
@@ -93,7 +89,6 @@ export default function AffiliatesManage() {
   const [statusSummary, setStatusSummary] = useState({ total: 0, active: 0, pending: 0, suspended: 0, rejected: 0 })
 
   const [selectedAffiliate, setSelectedAffiliate] = useState<any>(null)
-  const [showApproveDialog, setShowApproveDialog] = useState(false)
   const [showRejectDialog, setShowRejectDialog] = useState(false)
   const [showEditDrawer, setShowEditDrawer] = useState(false)
   const [showStatusDialog, setShowStatusDialog] = useState(false)
@@ -137,30 +132,6 @@ export default function AffiliatesManage() {
       }
     } finally {
       setIsLoading(false)
-    }
-  }
-
-  const handleApprove = async () => {
-    if (!selectedAffiliate) return
-    setIsProcessing(true)
-
-    try {
-      const result = await approveAffiliate(selectedAffiliate.userId)
-      if (result.success) {
-        toast({ title: "Sukses", description: "Affiliate berhasil disetujui" })
-        setShowApproveDialog(false)
-        loadAffiliates()
-      } else {
-        throw new Error(result.error)
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Gagal menyetujui affiliate",
-        variant: "destructive",
-      })
-    } finally {
-      setIsProcessing(false)
     }
   }
 
@@ -333,7 +304,7 @@ export default function AffiliatesManage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold mb-2">Kelola Affiliate</h1>
-        <p className="text-muted-foreground">Approve, monitor, dan kelola akun affiliate</p>
+        <p className="text-muted-foreground">Pantau verifikasi email dan kelola akun affiliate</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
@@ -367,7 +338,7 @@ export default function AffiliatesManage() {
           <CardContent className="p-5">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Pending</p>
+                <p className="text-sm text-muted-foreground">Menunggu Verifikasi Email</p>
                 <p className="text-2xl font-semibold">{statusSummary.pending}</p>
               </div>
               <div className="rounded-full bg-amber-500/10 p-2.5 text-amber-600">
@@ -439,7 +410,7 @@ export default function AffiliatesManage() {
                   <TableCell>{statusSummary.active}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Pending</TableCell>
+                  <TableCell>Menunggu Verifikasi Email</TableCell>
                   <TableCell>{statusSummary.pending}</TableCell>
                 </TableRow>
                 <TableRow>
@@ -514,7 +485,7 @@ export default function AffiliatesManage() {
                       <TableCell className="text-sm">{affiliate.email}</TableCell>
                       <TableCell>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusBadge(affiliate.status)}`}>
-                          {affiliate.status}
+                          {affiliate.status === "pending" ? "Menunggu Verifikasi Email" : affiliate.status}
                         </span>
                       </TableCell>
                       <TableCell>
@@ -540,30 +511,17 @@ export default function AffiliatesManage() {
                           </Button>
 
                           {affiliate.status === "pending" && (
-                            <>
-                              <Button
-                                size="sm"
-                                variant="ghost"
-                                className="text-green-600 hover:text-green-700"
-                                onClick={() => {
-                                  setSelectedAffiliate(affiliate)
-                                  setShowApproveDialog(true)
-                                }}
-                              >
-                                <Check className="w-4 h-4" />
-                              </Button>
-                              <Button
-                                size="sm"
-                                variant="ghost"
-                                className="text-red-600 hover:text-red-700"
-                                onClick={() => {
-                                  setSelectedAffiliate(affiliate)
-                                  setShowRejectDialog(true)
-                                }}
-                              >
-                                <X className="w-4 h-4" />
-                              </Button>
-                            </>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="text-red-600 hover:text-red-700"
+                              onClick={() => {
+                                setSelectedAffiliate(affiliate)
+                                setShowRejectDialog(true)
+                              }}
+                            >
+                              <X className="w-4 h-4" />
+                            </Button>
                           )}
 
                           {affiliate.status === "active" && (
@@ -617,23 +575,6 @@ export default function AffiliatesManage() {
           )}
         </CardContent>
       </Card>
-
-      <AlertDialog open={showApproveDialog} onOpenChange={setShowApproveDialog}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Setujui Affiliate?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Setujui {selectedAffiliate?.storeName}? Email konfirmasi akan dikirim ke pemilik.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Batal</AlertDialogCancel>
-            <AlertDialogAction onClick={handleApprove} disabled={isProcessing}>
-              {isProcessing ? "Memproses..." : "Setujui"}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
 
       <Dialog open={showRejectDialog} onOpenChange={setShowRejectDialog}>
         <DialogContent>

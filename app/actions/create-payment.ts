@@ -108,7 +108,7 @@ export async function createPayment(data: {
         const voucher = voucherValidation.voucher
         voucherCode = voucher.code
         voucherDownloadUrl = voucher.downloadUrl
-        if (voucher.minimumPurchase && basePrice < voucher.minimumPurchase) {
+        if (typeof voucher.minimumPurchase === "number" && basePrice < voucher.minimumPurchase) {
           throw new Error(`Voucher ini berlaku untuk pembelian minimal ${formatRupiah(voucher.minimumPurchase)}`)
         }
         discountType = voucher.discountType

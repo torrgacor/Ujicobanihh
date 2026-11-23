@@ -84,28 +84,20 @@ export default function AffiliateRegisterPage() {
           </div>
           <CardHeader className="px-0 text-center">
             <CardTitle className="text-2xl">Registrasi Berhasil!</CardTitle>
-            <CardDescription className="text-slate-400">Tunggu email konfirmasi dari admin untuk memulai perjalanan affiliate Anda.</CardDescription>
+            <CardDescription className="text-slate-400">Buka email Anda dan aktifkan akun melalui tautan verifikasi yang kami kirim.</CardDescription>
           </CardHeader>
           <CardContent className="w-full space-y-4 px-0">
             <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-4 space-y-2">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">User ID</p>
-                <p className="font-mono text-sm font-medium text-white">{registrationData.userId}</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Referral Code</p>
-                <p className="font-mono text-sm font-medium text-white">{registrationData.referralCode}</p>
+                <p className="text-sm font-medium text-white">Verifikasi email untuk mengaktifkan akun sebelum login.</p>
               </div>
             </div>
             <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4 text-sm text-emerald-100">
               <div className="flex items-center gap-2 font-medium">
                 <BadgeCheck className="h-4 w-4" />
-                Email konfirmasi sedang dikirim ke {formData.email}
+                Tautan verifikasi dikirim ke {formData.email}
               </div>
             </div>
-            <Button onClick={() => router.push("/affiliate/login")} className="w-full bg-teal-600 hover:bg-teal-500">
-              Login Sekarang
-            </Button>
             <Button onClick={() => router.push("/affiliate")} className="w-full bg-zinc-800 hover:bg-zinc-700">
               Kembali ke Beranda
             </Button>         
@@ -207,7 +199,7 @@ export default function AffiliateRegisterPage() {
               </div>
 
               <div className="rounded-2xl border border-amber-400/20 bg-amber-500/10 p-4 text-sm text-amber-100">
-                Setelah mendaftar, akun Anda akan berstatus <strong>Pending</strong> dan menunggu approval admin. Anda akan menerima email konfirmasi setelah disetujui.
+                Setelah mendaftar, Anda akan menerima tautan verifikasi email. Akun aktif setelah tautan tersebut dikonfirmasi.
               </div>
 
               <Button type="submit" disabled={isLoading} className="h-11 w-full bg-teal-600 text-white hover:bg-teal-500">

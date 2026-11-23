@@ -23,6 +23,7 @@ export default async function AffiliateDashboardPage() {
 
   const affiliate = await affiliateProfiles.findOne({ userId: affiliateUser })
   if (!affiliate) redirect("/affiliate/register")
+  if (affiliate.status !== "active") redirect("/affiliate/login?status=verification-required")
   const affiliateId = affiliate?.userId || "demo-affiliate"
 
   const commissions = await affiliateTransactions
@@ -142,7 +143,6 @@ export default async function AffiliateDashboardPage() {
                 />
                 <span className="text-lg font-medium capitalize">{affiliate?.status ?? "pending"}</span>
               </div>
-              {affiliate?.status === "pending" && <p className="mt-2 text-sm text-amber-300">⏳ Menunggu approval admin</p>}
             </CardContent>
           </Card>
         </div>

@@ -14,7 +14,7 @@ export interface AffiliateProfile {
   accountNumber?: string
   accountName?: string
   referralCode?: string
-  status: "active" | "suspended" | "pending"
+  status: "active" | "suspended" | "pending" | "rejected"
   wallet: {
     balance: number
     pending: number

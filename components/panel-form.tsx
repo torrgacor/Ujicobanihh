@@ -47,6 +47,7 @@ export default function PanelForm() {
     code: string
     discountType: DiscountType
     discountValue: number
+    minimumPurchase?: number
     description?: string
   } | null>(null)
   

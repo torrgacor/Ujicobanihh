@@ -42,82 +42,107 @@ export async function registerAffiliate(input: RegisterAffiliateInput) {
       return { success: false, error: "Nama akun harus diisi" }
     }
 
+    const email = input.email.trim().toLowerCase()
     const client = await clientPromise
     const db = client.db(appConfig.mongodb.dbName)
     const affiliateProfiles = db.collection("affiliate_profiles")
+    const existing = await affiliateProfiles.findOne({ email })
 
-    // Check if email already exists
-    const existing = await affiliateProfiles.findOne({ email: input.email })
-    if (existing) {
+    if (existing && existing.status !== "pending") {
       return { success: false, error: "Email sudah terdaftar sebagai affiliate" }
     }
 
-    // Generate unique userId and referral code
-    const userId = `affiliate_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-    const referralCode = generateReferralCode()
+    const token = crypto.randomBytes(32).toString("hex")
+    const tokenHash = crypto.createHash("sha256").update(token).digest("hex")
+    const verificationExpiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000)
+    const verificationUrl = `${(process.env.NEXT_PUBLIC_APP_URL || appConfig.LinkWebsite).replace(/\/+$/, "")}/affiliate/verify?token=${token}`
+    const now = new Date()
+    let userId: string
+    let referralCode: string
 
-    // Create affiliate profile
-    const affiliateData = {
-      userId,
-      storeName: input.storeName,
-      email: input.email,
-      ownerName: input.ownerName,
-      phoneNumber: input.phoneNumber,
-      withdrawMethod: input.withdrawMethod,
-      accountNumber: input.accountNumber,
-      accountName: input.accountName,
-      referralCode,
-      status: "pending" as const,
-      wallet: {
-        balance: 0,
-        pending: 0,
-      },
-      referralStats: {
-        clicks: 0,
-        conversions: 0,
-        successfulTransactions: 0,
-        totalCommission: 0,
-      },
-      levelName: "Bronze",
-      levelThreshold: 0,
-      levelCommissionPercent: 10,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+    if (existing) {
+      userId = existing.userId
+      referralCode = existing.referralCode
+      const updateResult = await affiliateProfiles.updateOne(
+        { userId, status: "pending" },
+        {
+          $set: {
+            emailVerificationTokenHash: tokenHash,
+            emailVerificationExpiresAt: verificationExpiresAt,
+            updatedAt: now,
+          },
+        }
+      )
+      if (updateResult.matchedCount === 0) {
+        return { success: false, error: "Status akun berubah. Silakan coba mendaftar kembali." }
+      }
+    } else {
+      userId = `affiliate_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      referralCode = generateReferralCode()
+      const affiliateData = {
+        userId,
+        storeName: input.storeName.trim(),
+        email,
+        ownerName: input.ownerName.trim(),
+        phoneNumber: input.phoneNumber.trim(),
+        withdrawMethod: input.withdrawMethod,
+        accountNumber: input.accountNumber.trim(),
+        accountName: input.accountName.trim(),
+        referralCode,
+        status: "pending" as const,
+        emailVerificationTokenHash: tokenHash,
+        emailVerificationExpiresAt: verificationExpiresAt,
+        wallet: {
+          balance: 0,
+          pending: 0,
+        },
+        referralStats: {
+          clicks: 0,
+          conversions: 0,
+          successfulTransactions: 0,
+          totalCommission: 0,
+        },
+        levelName: "Bronze",
+        levelThreshold: 0,
+        levelCommissionPercent: 10,
+        createdAt: now,
+        updatedAt: now,
+      }
+
+      await affiliateProfiles.insertOne(affiliateData)
+      await syncAffiliateLevel(userId)
     }
 
-    await affiliateProfiles.insertOne(affiliateData)
-    await syncAffiliateLevel(userId)
-
-    // Send email to affiliate
-    await sendEmail({
-      to: input.email,
-      subject: "Registrasi Affiliate Berhasil",
+    const emailResult = await sendEmail({
+      to: email,
+      subject: "Verifikasi Email Affiliate",
       html: `
-        <h2>Pendaftaran Affiliate Berhasil!</h2>
-        <p>Terima kasih telah mendaftar sebagai affiliate di ${appConfig.nameHost}</p>
-        
-        <h3>Detail Akun Anda:</h3>
-        <ul>
-          <li><strong>Nama Toko:</strong> ${input.storeName}</li>
-          <li><strong>Email:</strong> ${input.email} (Data Login)</li>
-          <li><strong>Nomor Telepon:</strong> ${input.phoneNumber} (Data Login)</li>
-          <li><strong>User ID:</strong> ${userId}</li>
-          <li><strong>Referral Code:</strong> ${referralCode}</li>
-        </ul>
-        
-        <p>Proses verifikasi biasanya memakan waktu 1×24 jam.</p>
-        <p>Untuk pertanyaan, silakan hubungi support kami.</p>
+        <h2>Verifikasi Pendaftaran Affiliate</h2>
+        <p>Terima kasih telah mendaftar sebagai affiliate di ${appConfig.nameHost}.</p>
+        <p>Aktifkan akun Anda dengan mengklik tombol berikut. Tautan berlaku selama 24 jam.</p>
+        <p><a href="${verificationUrl}">Verifikasi dan Aktifkan Akun</a></p>
+        <p>Jika Anda tidak merasa mendaftar, abaikan email ini.</p>
       `,
     })
 
-    // Send notification to admin
+    if (!emailResult.success) {
+      await affiliateProfiles.updateOne(
+        { userId, emailVerificationTokenHash: tokenHash },
+        { $unset: { emailVerificationTokenHash: "", emailVerificationExpiresAt: "" } }
+      )
+      if (!existing) {
+        await affiliateProfiles.deleteOne({ userId })
+      }
+      return { success: false, error: "Email verifikasi gagal dikirim. Silakan coba mendaftar kembali." }
+    }
+
     await sendTelegramAdminMessage(
-      `🆕 REGISTRASI AFFILIATE BARU\n\nNama Toko: ${input.storeName}\nEmail: ${input.email}\nUser ID: ${userId}\nStatus: Pending Approval\n\nSilakan review di admin panel.`
-    )
+      `🆕 REGISTRASI AFFILIATE BARU\n\nNama Toko: ${existing?.storeName || input.storeName}\nEmail: ${email}\nUser ID: ${userId}\nStatus: Menunggu Verifikasi Email`
+    ).catch((error) => console.error("Gagal mengirim notifikasi registrasi affiliate:", error))
 
     return {
       success: true,
-      message: "Registrasi berhasil! Tunggu email konfirmasi dari admin.",
+      message: "Registrasi berhasil! Silakan buka email dan aktifkan akun melalui tautan verifikasi.",
       userId,
       referralCode,
     }
@@ -127,51 +152,42 @@ export async function registerAffiliate(input: RegisterAffiliateInput) {
   }
 }
 
-export async function approveAffiliate(userId: string, adminNotes?: string) {
+export async function verifyAffiliateEmail(token: string) {
   try {
+    if (!token?.trim()) {
+      return { success: false, error: "Tautan verifikasi tidak valid atau sudah kedaluwarsa." }
+    }
+
     const client = await clientPromise
     const db = client.db(appConfig.mongodb.dbName)
     const affiliateProfiles = db.collection("affiliate_profiles")
-
-    const result = await affiliateProfiles.findOneAndUpdate(
-      { userId },
+    const tokenHash = crypto.createHash("sha256").update(token.trim()).digest("hex")
+    const result = await affiliateProfiles.updateOne(
+      {
+        emailVerificationTokenHash: tokenHash,
+        emailVerificationExpiresAt: { $gt: new Date() },
+        status: "pending",
+      },
       {
         $set: {
           status: "active",
-          adminNotes,
           updatedAt: new Date(),
         },
+        $unset: {
+          emailVerificationTokenHash: "",
+          emailVerificationExpiresAt: "",
+        },
       },
-      { returnDocument: "after" }
     )
 
-    if (!result.value) {
-      return { success: false, error: "Affiliate tidak ditemukan" }
+    if (result.modifiedCount === 0) {
+      return { success: false, error: "Tautan verifikasi tidak valid atau sudah kedaluwarsa." }
     }
 
-    // Send email to affiliate
-    await sendEmail({
-      to: result.value.email,
-      subject: "Akun Affiliate Disetujui - Siap Digunakan",
-      html: `
-        <h2>Selamat! Akun Affiliate Anda Telah Disetujui 🎉</h2>
-        <p>Akun affiliate Anda di ${appConfig.nameHost} telah disetujui dan siap digunakan.</p>
-        
-        <h3>Informasi Akun:</h3>
-        <ul>
-          <li><strong>Nama Toko:</strong> ${result.value.storeName}</li>
-          <li><strong>Referral Code:</strong> ${result.value.referralCode}</li>
-          <li><strong>Status:</strong> Active</li>
-        </ul>
-        
-        <p><a href="${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/affiliate">Klik di sini untuk akses dashboard affiliate Anda</a></p>
-      `,
-    })
-
-    return { success: true, message: "Affiliate berhasil disetujui" }
+    return { success: true, message: "Email berhasil diverifikasi. Akun affiliate Anda sekarang aktif." }
   } catch (error) {
-    console.error("approveAffiliate error:", error)
-    return { success: false, error: "Gagal mengsetujui affiliate" }
+    console.error("verifyAffiliateEmail error:", error)
+    return { success: false, error: "Gagal memverifikasi email affiliate" }
   }
 }
 
@@ -193,13 +209,13 @@ export async function rejectAffiliate(userId: string, reason?: string) {
       { returnDocument: "after" }
     )
 
-    if (!result.value) {
+    if (!result) {
       return { success: false, error: "Affiliate tidak ditemukan" }
     }
 
     // Send email
     await sendEmail({
-      to: result.value.email,
+      to: result.email,
       subject: "Pendaftaran Affiliate Ditolak",
       html: `
         <h2>Pendaftaran Affiliate Ditolak</h2>

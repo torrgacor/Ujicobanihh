@@ -121,6 +121,7 @@ export async function createWithdrawalRequest({
     await session.withTransaction(async () => {
       const profile = await affiliateProfiles.findOne({ userId: affiliateId }, { session })
       if (!profile) throw new Error("Affiliate tidak ditemukan")
+      if (profile.status !== "active") throw new Error("Akun affiliate belum aktif")
       if (!profile.withdrawMethod || !profile.accountNumber || !profile.accountName) {
         throw new Error("Data rekening belum lengkap. Hubungi admin untuk memperbarui data rekening.")
       }

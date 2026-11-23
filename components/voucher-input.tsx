@@ -180,6 +180,11 @@ export function VoucherInput({ userIdentifier, onVoucherApplied, onVoucherRemove
                           ? `${appliedVoucher.discountValue}%`
                           : `Rp ${appliedVoucher.discountValue.toLocaleString("id-ID")}`}
                       </p>
+                      {appliedVoucher.minimumPurchase !== undefined && appliedVoucher.minimumPurchase > 0 && (
+                        <p className="text-xs text-green-200/80 mt-1">
+                          Minimal transaksi Rp {appliedVoucher.minimumPurchase.toLocaleString("id-ID")}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <Button

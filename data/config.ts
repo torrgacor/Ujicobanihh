@@ -35,6 +35,8 @@ export const pterodactylConfig = {
   eggSamp: "16",
 }
 
+const emailSenderUser = process.env.GMAIL_USER || "mail.mts4youxd425@gmail.com"
+
 export const appConfig = {
   whatsappGroupLink: "https://whatsapp.com/channel/0029VbBHzkt1t90Z4H55f638",
   LinkTutorial: "https://youtu.be/OYuigq0zpjc?si=E-EB-eq-e2dNNEcM", // link tutorial YouTube
@@ -50,14 +52,14 @@ export const appConfig = {
     api_id: process.env.SAKURUPIAH_ID,
   },
   emailSender: {
-    host: "mail.mts4youxd425@gmail.com", // Gmail host
+    host: emailSenderUser,
     port: 587, // ga usa di ubah, ga guna 
     secure: false, // false in
     auth: {
-      user: "mail.mts4youxd425@gmail.com", // Gmail buat ngirim ke Gmail buyer 
+      user: emailSenderUser,
       pass: process.env.GMAIL_PASSWORD, // sandi aplikasi 
     },
-    from: "Tukang Panel <mail.mts4youxd425@gmail.com>",
+    from: process.env.GMAIL_FROM || `Tukang Panel <${emailSenderUser}>`,
   }, // ganti sendiri 
   telegram: {
     botToken: "8877809073:AAEwdj729MJYpFyDxNGuMx-K15jAMBaUhhI",

@@ -10,9 +10,15 @@ export async function POST(req: Request) {
     const { affiliateProfiles } = await getCollections()
     const profile = await affiliateProfiles.findOne({ email: String(email).toLowerCase().trim(), phoneNumber: String(phoneNumber).trim() })
     if (!profile) return NextResponse.json({ error: 'invalid credentials' }, { status: 401 })
+    if (profile.status !== "active") {
+      return NextResponse.json(
+        { error: profile.status === "pending" ? "Verifikasi email Anda sebelum login." : "Akun affiliate tidak aktif." },
+        { status: 403 }
+      )
+    }
 
     const res = NextResponse.json({ success: true })
-    res.cookies.set('affiliate_user', profile.userId, { httpOnly: true, path: '/', maxAge: 60 * 60 * 24 * 30 })
+    res.cookies.set('affiliate_user', profile.userId, { httpOnly: true, path: '/', maxAge: 60 * 60 * 24 * 30, sameSite: "lax", secure: process.env.NODE_ENV === "production" })
     return res
   } catch (err) {
     console.error(err)

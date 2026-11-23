@@ -17,7 +17,7 @@ interface SearchParams {
 }
 
 export default async function AffiliateTransactionsPage({ searchParams }: { searchParams?: SearchParams }) {
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   const affiliateUser = cookieStore.get("affiliate_user")?.value
   if (!affiliateUser) {
     redirect("/affiliate/login")
@@ -26,6 +26,7 @@ export default async function AffiliateTransactionsPage({ searchParams }: { sear
   const { affiliateProfiles, affiliateTransactions, withdrawalRequests } = await getCollections()
   const affiliate = await affiliateProfiles.findOne({ userId: affiliateUser })
   if (!affiliate) redirect("/affiliate/register")
+  if (affiliate.status !== "active") redirect("/affiliate/login?status=verification-required")
 
   const typeFilter = Array.isArray(searchParams?.type) ? searchParams?.type[0] : searchParams?.type
   const statusFilter = Array.isArray(searchParams?.status) ? searchParams?.status[0] : searchParams?.status

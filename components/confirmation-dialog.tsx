@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { formatRupiah, calculateDiscount } from "@/lib/utils"
+import { formatRupiah, calculateDiscount, calculateDurationAdjustedPrice } from "@/lib/utils"
 import { plans } from "@/data/plans"
 import { Loader2 } from "lucide-react"
 import { EggOption } from "@/lib/pterodactyl"
@@ -34,10 +34,11 @@ interface ConfirmationDialogProps {
     code: string
     discountType: DiscountType
     discountValue: number
+    minimumPurchase?: number
     description?: string
   } | null
   durationDays?: number
-  onVoucherApplied?: (voucher: { code: string; discountType: DiscountType; discountValue: number; description?: string }) => void
+  onVoucherApplied?: (voucher: { code: string; discountType: DiscountType; discountValue: number; minimumPurchase?: number; description?: string }) => void
   onVoucherRemoved?: () => void
 }
 
@@ -61,15 +62,17 @@ export function ConfirmationDialog({
   const plan = plans.find((p) => p.id === planId)
   const selectedEgg = eggs.find(egg => egg.id === selectedEggId)
   const eggPrice = selectedEgg?.harga || 0
-  const durationMultiplier = durationDays === 15 ? 0.5 : durationDays === 45 ? 1.5 : 1
-  const adjustedPlanPrice = (plan?.price || 0) * durationMultiplier
+  const adjustedPlanPrice = calculateDurationAdjustedPrice(plan?.price || 0, durationDays)
   const basePrice = (adjustedPlanPrice + eggPrice) * quantity
-  
+
+  const minimumPurchase = appliedVoucher?.minimumPurchase
+  const belowMinimumPurchase = typeof minimumPurchase === "number" && basePrice < minimumPurchase
+
   // Calculate discount if voucher is applied
-  const discountAmount = appliedVoucher 
+  const discountAmount = appliedVoucher && !belowMinimumPurchase
     ? calculateDiscount(basePrice, appliedVoucher.discountType, appliedVoucher.discountValue)
     : 0
-  
+
   const finalPrice = basePrice - discountAmount
 
   if (!plan) return null
@@ -159,6 +162,13 @@ export function ConfirmationDialog({
             fee={0}
             totalPrice={finalPrice}
           />
+
+          {belowMinimumPurchase && (
+            <p className="text-sm text-amber-300" role="alert">
+              Minimal transaksi voucher ini {formatRupiah(minimumPurchase ?? 0)}.
+              Tambahkan {formatRupiah((minimumPurchase ?? 0) - basePrice)} agar voucher dapat digunakan.
+            </p>
+          )}
           
           <p className="text-sm text-gray-400">
             Dengan mengklik tombol "Lanjutkan Pembayaran", Anda akan diarahkan ke halaman pembayaran.
@@ -173,7 +183,7 @@ export function ConfirmationDialog({
           >
             Batal
           </Button>
-          <Button onClick={onConfirm} className="w-full sm:w-auto bg-red-600 hover:bg-red-700" disabled={isLoading}>
+          <Button onClick={onConfirm} className="w-full sm:w-auto bg-red-600 hover:bg-red-700" disabled={isLoading || belowMinimumPurchase}>
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
