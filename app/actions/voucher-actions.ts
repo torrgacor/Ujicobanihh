@@ -122,26 +122,26 @@ export async function claimVoucher(data: { userIdentifier: string; code: string 
       throw new Error("Voucher telah mencapai batas penggunaan maksimal")
     }
 
-    // Check if user already claimed this voucher
-    const alreadyClaimed = await userVouchersCollection.findOne({
+    // Gunakan klaim aktif yang sama bila voucher sudah pernah diklaim.
+    // Klaim lama yang sudah dipakai tetap boleh diklaim ulang oleh username yang sama.
+    const activeClaim = await userVouchersCollection.findOne({
       userId: data.userIdentifier,
       code: data.code.toUpperCase(),
+      used: false,
     })
 
-    if (alreadyClaimed) {
-      throw new Error("Username yang digunakan sudah pernah claim voucher ini, ubah dengan Username lain")
-    }
+    if (!activeClaim) {
+      // Add to user vouchers
+      const userVoucher: UserVoucher = {
+        userId: data.userIdentifier,
+        voucherId: voucher._id!,
+        code: data.code.toUpperCase(),
+        claimedAt: new Date(),
+        used: false,
+      }
 
-    // Add to user vouchers
-    const userVoucher: UserVoucher = {
-      userId: data.userIdentifier,
-      voucherId: voucher._id!,
-      code: data.code.toUpperCase(),
-      claimedAt: new Date(),
-      used: false,
+      await userVouchersCollection.insertOne(userVoucher)
     }
-
-    await userVouchersCollection.insertOne(userVoucher)
 
     return {
       success: true,

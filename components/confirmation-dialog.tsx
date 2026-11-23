@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog"
 import { formatRupiah, calculateDiscount, calculateDurationAdjustedPrice } from "@/lib/utils"
 import { plans } from "@/data/plans"
-import { Loader2 } from "lucide-react"
+import { AlertCircle, Loader2 } from "lucide-react"
 import { EggOption } from "@/lib/pterodactyl"
 import { VoucherInput } from "./voucher-input"
 import { DiscountSummary } from "./discount-summary"
@@ -164,10 +164,13 @@ export function ConfirmationDialog({
           />
 
           {belowMinimumPurchase && (
-            <p className="text-sm text-amber-300" role="alert">
-              Minimal transaksi voucher ini {formatRupiah(minimumPurchase ?? 0)}.
-              Tambahkan {formatRupiah((minimumPurchase ?? 0) - basePrice)} agar voucher dapat digunakan.
-            </p>
+            <div className="flex items-start gap-2 rounded-lg border border-amber-700/50 bg-amber-900/20 p-3 text-sm text-amber-200" role="alert">
+              <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-400" />
+              <p>
+                Minimal transaksi voucher ini <span className="font-semibold">{formatRupiah(minimumPurchase ?? 0)}</span>.
+                Tambahkan <span className="font-semibold">{formatRupiah((minimumPurchase ?? 0) - basePrice)}</span> agar voucher dapat digunakan.
+              </p>
+            </div>
           )}
           
           <p className="text-sm text-gray-400">
