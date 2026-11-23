@@ -7,6 +7,7 @@ import { uploadBuktiTransfer } from "@/lib/cdn-upload"
 import { Input } from "@/components/ui/input"
 import { Upload, X } from "lucide-react"
 import { Drawer } from "vaul"
+import { getAffiliateWithdrawMethodLabel } from "@/lib/affiliate-withdraw-methods"
 
 export default function AdminWithdrawQueue() {
   const [pendings, setPendings] = useState<any[]>([])
@@ -126,7 +127,7 @@ export default function AdminWithdrawQueue() {
                     <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                       <div>
                         <p className="font-semibold text-base">{p.affiliateId}</p>
-                        <p className="text-sm text-muted-foreground">{p.method} • {p.accountNumber} • {p.accountName}</p>
+                        <p className="text-sm text-muted-foreground">{getAffiliateWithdrawMethodLabel(p.method)} • {p.accountNumber} • {p.accountName}</p>
                       </div>
                       <div className="text-xs text-muted-foreground bg-muted px-2.5 py-1 rounded-md self-start md:self-center">
                         {new Date(p.createdAt).toLocaleString("id-ID")}

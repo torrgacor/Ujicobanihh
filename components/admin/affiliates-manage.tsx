@@ -67,6 +67,7 @@ import {
 } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { AFFILIATE_WITHDRAW_METHODS } from "@/lib/affiliate-withdraw-methods"
 
 const FORM_KOSONG = {
   storeName: "",
@@ -713,9 +714,9 @@ export default function AffiliatesManage() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="transfer_bank">Transfer Bank</SelectItem>
-                      <SelectItem value="e_wallet">E-Wallet (OVO/Dana/Gopay)</SelectItem>
-                      <SelectItem value="pulsa">Pulsa</SelectItem>
+                      {AFFILIATE_WITHDRAW_METHODS.map((method) => (
+                        <SelectItem key={method.value} value={method.value}>{method.label}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>

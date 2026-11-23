@@ -10,6 +10,7 @@ import Link from "next/link"
 import { ArrowRight, BadgeCheck, CircleDollarSign, Sparkles, Wallet2, Wallet } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
 import AffiliateNav from "@/components/affiliate/affiliate-nav"
+import { getAffiliateWithdrawMethodLabel } from "@/lib/affiliate-withdraw-methods"
 
 export const dynamic = "force-dynamic"
 
@@ -48,7 +49,7 @@ export default async function AffiliateDashboardPage() {
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     .slice(0, 8)
 
-  const payoutMethod = affiliate.withdrawMethod === "e_wallet" ? "E-Wallet" : "Transfer Bank"
+  const payoutMethod = getAffiliateWithdrawMethodLabel(affiliate.withdrawMethod)
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(20,184,166,0.1),_transparent_35%),linear-gradient(135deg,_#050505_0%,_#111827_100%)] px-4 py-6 text-slate-50 md:px-8 md:py-10">

@@ -8,6 +8,7 @@ import { formatRupiah, formatDate } from "@/lib/utils"
 import Link from "next/link"
 import { TrendingUp, Wallet, History, Filter } from "lucide-react"
 import AffiliateNav from "@/components/affiliate/affiliate-nav"
+import { getAffiliateWithdrawMethodLabel } from "@/lib/affiliate-withdraw-methods"
 
 export const dynamic = "force-dynamic"
 
@@ -68,7 +69,7 @@ export default async function AffiliateTransactionsPage({ searchParams }: { sear
           : "Pending",
       status: withdraw.status,
       amount: withdraw.amount,
-      detail: `${withdraw.method} • ${withdraw.accountNumber}`,
+      detail: `${getAffiliateWithdrawMethodLabel(withdraw.method)} • ${withdraw.accountNumber}`,
       reference: withdraw.txId || "",
       proofUrl: withdraw.proof?.url || "",
       rawType: "withdraw",

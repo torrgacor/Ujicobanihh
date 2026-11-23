@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast"
 import { registerAffiliate } from "@/app/actions/affiliate-registration"
 import { Loader2, Check, ArrowLeft, BadgeCheck, Sparkles, ArrowRight } from "lucide-react"
+import { AFFILIATE_WITHDRAW_METHODS } from "@/lib/affiliate-withdraw-methods"
 
 export default function AffiliateRegisterPage() {
   const router = useRouter()
@@ -178,8 +179,9 @@ export default function AffiliateRegisterPage() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="border-white/10 bg-zinc-900 text-white">
-                      <SelectItem value="transfer_bank">Transfer Bank</SelectItem>
-                      <SelectItem value="e_wallet">E-Wallet (OVO/Dana/Gopay)</SelectItem>
+                      {AFFILIATE_WITHDRAW_METHODS.map((method) => (
+                        <SelectItem key={method.value} value={method.value}>{method.label}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>

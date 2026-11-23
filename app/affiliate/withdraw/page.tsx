@@ -7,6 +7,7 @@ import WithdrawForm from "@/components/affiliate/withdraw-form"
 import { getAffiliateMinWithdraw, getCollections } from "@/lib/affiliate"
 import { formatDate, formatRupiah } from "@/lib/utils"
 import { Wallet, Clock3 } from "lucide-react"
+import { getAffiliateWithdrawMethodLabel } from "@/lib/affiliate-withdraw-methods"
 
 export const dynamic = "force-dynamic"
 
@@ -25,7 +26,7 @@ export default async function AffiliateWithdrawPage() {
     getAffiliateMinWithdraw(),
   ])
 
-  const payoutMethod = affiliate.withdrawMethod === "e_wallet" ? "E-Wallet" : "Transfer Bank"
+  const payoutMethod = getAffiliateWithdrawMethodLabel(affiliate.withdrawMethod)
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(20,184,166,0.1),_transparent_35%),linear-gradient(135deg,_#050505_0%,_#111827_100%)] px-4 py-6 text-slate-50 md:px-8 md:py-10">
@@ -90,7 +91,7 @@ export default async function AffiliateWithdrawPage() {
                   <TableRow key={withdraw._id.toString()} className="border-white/10">
                     <TableCell className="text-slate-300">{formatDate(withdraw.createdAt)}</TableCell>
                     <TableCell className="font-semibold text-amber-300">{formatRupiah(withdraw.amount)}</TableCell>
-                    <TableCell className="text-slate-300">{withdraw.method}</TableCell>
+                    <TableCell className="text-slate-300">{getAffiliateWithdrawMethodLabel(withdraw.method)}</TableCell>
                     <TableCell>
                       <span className={`rounded px-2 py-1 text-xs ${
                         withdraw.status === "approved"

@@ -7,6 +7,7 @@ import { appConfig } from "@/data/config"
 import { formatRupiah } from "@/lib/utils"
 import { sendEmail, sendWithdrawalStatusEmail } from "@/lib/email-service"
 import { sendTelegramAdminMessage } from "@/lib/telegram-service"
+import { getAffiliateWithdrawMethodLabel } from "@/lib/affiliate-withdraw-methods"
 
 /**
  * Proses pembelian lewat affiliate.
@@ -115,6 +116,7 @@ export async function createWithdrawalRequest({
     let result: any = null
     let createdProfile: any = null
     let method = ""
+    let methodLabel = ""
     let accountNumber = ""
     let accountName = ""
 
@@ -132,6 +134,7 @@ export async function createWithdrawalRequest({
 
       createdProfile = profile
       method = profile.withdrawMethod
+      methodLabel = getAffiliateWithdrawMethodLabel(method)
       accountNumber = profile.accountNumber
       accountName = profile.accountName
 
@@ -173,7 +176,7 @@ export async function createWithdrawalRequest({
               <p>Permintaan withdraw Anda sebesar <strong>${formatRupiah(amount)}</strong> sedang diproses oleh admin.</p>
               <p>Detail pengajuan:</p>
               <ul>
-                <li><strong>Metode:</strong> ${method}</li>
+                <li><strong>Metode:</strong> ${methodLabel}</li>
                 <li><strong>Nomor Akun:</strong> ${accountNumber}</li>
                 <li><strong>Nama Pemilik:</strong> ${accountName}</li>
               </ul>
@@ -189,7 +192,7 @@ export async function createWithdrawalRequest({
       `*New Withdraw Request*
 Affiliate: ${createdProfile?.storeName || affiliateId}
 Amount: ${formatRupiah(amount)}
-Method: ${method}
+Method: ${methodLabel}
 Account: ${accountNumber}
 Name: ${accountName}`
     ).catch(() => null)
